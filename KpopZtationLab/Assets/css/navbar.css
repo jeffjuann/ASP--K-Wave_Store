@@ -1,0 +1,41 @@
+﻿
+@import url('https://fonts.cdnfonts.com/css/k2d');
+@import url('https://fonts.cdnfonts.com/css/inter');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    text-decoration:none;
+    color:black;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #0062CC;
+    padding: 1rem;
+    align-items:center;
+}
+
+nav .left {
+    font-family: 'K2D SemiBold', sans-serif !important;
+    padding:auto 0;
+}
+nav .left h1 {
+    margin: auto 0 !important;
+}
+nav .right {
+    display: flex;
+    gap: 1rem;
+
+}
+
+nav .right .navbarButton {
+    color: #0062CC;
+    background: white;
+    border-radius: 15px;
+    padding:1rem 2rem;
+}

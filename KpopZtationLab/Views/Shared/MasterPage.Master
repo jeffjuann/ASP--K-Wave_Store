@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="KpopZtationLab.Views.Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>MasterPage</title>
+    <script src="https://kit.fontawesome.com/5c162aa104.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../Assets/css/navbar.css" />
+        <link rel="stylesheet" href="../../Assets/css/global.css"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>  
+    <form id="form1" runat="server">
+        <nav id="customerNavbar" runat="server">
+            <div class="left">
+               <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
+            </div>
+            <div class="right">
+            <%--   <i class="fa-regular fa-cart-shopping"></i>
+               <i class="fa-light fa-circle-user"></i>--%>
+                <h3>cart</h3>
+                <h3>Transaction</h3>
+                <h3>Update Profile</h3>
+                <h3>Logout</h3>
+            </div>
+        </nav>
+         <nav id="adminNavbar" runat="server">
+            <div class="left">
+               <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
+            </div>            
+             <div class="right">
+        <%--        <i class="fa-sharp fa-regular fa-clipboard-list"></i>
+                <i class="fa-light fa-circle-user"></i>--%>
+                 <h3>Transactions</h3>
+                 <h3>Update Profile</h3>
+                 <h3>Logout</h3>
+            </div>
+        </nav>
+         <nav id="guestNavbar" runat="server">
+             <div class="left">
+               <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
+             </div>            
+             <div class="right">
+                <asp:Button class="navbarButton" ID="Button1" runat="server" Text="Login" OnClick="Login_Click"/>
+                <asp:Button class="navbarButton" ID="Button2" runat="server" Text="Register" OnClick="Register_Click"/>
+            </div>
+        </nav>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

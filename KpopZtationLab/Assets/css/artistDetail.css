@@ -1,0 +1,23 @@
+﻿.content{
+    padding:0 10%;
+    display:flex;
+    justify-content:space-between;
+}
+.content .left {
+    width: 30%; 
+}
+.content .right{
+    width:70%;
+}
+.content .left .img{
+    border-radius:45%;
+}
+.content .left .artist-title {
+    
+}
+.content .left .artist-type {
+
+}
+.content .right .card {
+    display:flex;
+}
