@@ -23,7 +23,6 @@ namespace KpopZtationLab.Views.Admin
                 if (success)
                 {
                     artist = repo.artists.Find(x => x.ArtistID == id).FirstOrDefault();
-                    ImageTobeUpdated.ImageUrl = artist.ArtistImage;
                     ArtistTxt.Text = artist.ArtistName;
                 }
             }

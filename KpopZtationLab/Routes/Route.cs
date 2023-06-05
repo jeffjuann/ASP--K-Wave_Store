@@ -19,6 +19,12 @@ namespace KpopZtationLab.Routes
         public static string TransactionHistory { get; private set; } = "~/Views/Customer/TransactionHistory.aspx";
 
         public static string UpdateArtist { get; private set; } = "~/Views/Admin/UpdateArtists.aspx";
+        public static string ArtistDetail { get; private set; } = "~/Views/Common/ArtistDetail.aspx";
+        public static string InsertAlbum { get; private set; } = "~/Views/Admin/InsertAlbum.aspx";
+        public static string UpdateAlbum { get; private set; } = "~/Views/Admin/UpdateAlbum.aspx";
+
+        public static string InsertArtist { get; private set; } = "~/Views/Admin/InsertArtists.aspx";
+        public static string AlbumDetail { get; private set; } = "~/Views/Common/AlbumDetail.aspx";
 
     }
 }

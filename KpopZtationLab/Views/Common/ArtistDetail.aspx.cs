@@ -13,12 +13,10 @@ namespace KpopZtationLab.Views.Common
     {
         protected List<Album> albums;
         protected Artist artist;
-        protected int? id;
+        protected int id;
+        protected string role = "ADMN";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                int id;
                 bool success = int.TryParse(Request.QueryString["id"], out id);
                 if(!success)
                 {
@@ -27,13 +25,44 @@ namespace KpopZtationLab.Views.Common
                 }
                 artist = ArtistController.Get_Artist_By_ID(id);
                 //album depends on artist so we need the id to fetch it
-                albums = AlbumController.Get_All_Albums(id); 
-            }
+                albums = AlbumController.Get_All_Albums(id);
+                AlbumListGridView.DataSource = AlbumController.Get_All_Albums(id);
+                AlbumListGridView.DataBind();
         }
 
-        protected void Navigate_Click(int id)
+
+        protected void NavigateToInsertAlbum_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/Common/AlbumDetail.aspx?ID=" + id);
+            int id;
+            bool success = int.TryParse(Request.QueryString["id"], out id);
+            if (!success)
+            {
+                Response.Redirect(Routes.Route.Home);
+                return;
+            }
+            Response.Redirect(Routes.Route.InsertAlbum+"?ID=" + id);
+        }
+
+        protected void AlbumListGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = AlbumListGridView.Rows[e.RowIndex];
+            int ID = int.Parse(row.Cells[0].Text);
+            AlbumController.Remove(ID);
+            Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + id);
+        }
+
+        protected void AlbumListGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRow row = AlbumListGridView.Rows[e.NewEditIndex];
+            int ID = int.Parse(row.Cells[0].Text);
+            Response.Redirect(Routes.Route.UpdateAlbum + "?ID=" + id);
+        }
+
+        protected void AlbumListGridView_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = AlbumListGridView.Rows[e.NewSelectedIndex];
+            int ID = int.Parse(row.Cells[0].Text);
+            Response.Redirect(Routes.Route.AlbumDetail + "?ID=" + id);
         }
     }
 }

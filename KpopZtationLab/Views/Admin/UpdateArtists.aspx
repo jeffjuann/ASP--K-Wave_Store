@@ -6,22 +6,14 @@
     <div class="container">
         <h1>List Of Existing</h1>
     </div>
-    <div class="flex">
-        <div class="left">
-            <%--render list of artists--%>
-        </div>
-        <div class="right">
-            <h2>Update Artist Data</h2>
-            <div class="flex">
-                <asp:Image ID="ImageTobeUpdated" runat="server" />
-                <div class="column">
-                    <h5>Artist's Name</h5>
-                    <asp:FileUpload ID="ArtistImg" runat="server" visible="true"/>
-                    <asp:TextBox ID="ArtistTxt" runat="server"></asp:TextBox>
-                    <asp:Label ID="errLbl" runat="server" Text=""></asp:Label>
-                </div>
-            </div>
-            <asp:Button ID="Button1" runat="server" Text="Update Artist" OnClick="Update_Click" />
-        </div>
-    </div>
+    <h2>Update Artist Data</h2>
+    <br />
+    <h5>Artist's Image</h5>
+    <asp:FileUpload ID="ArtistImg" runat="server" visible="true"/>
+    <h5>Artist's Name</h5>
+    <asp:TextBox ID="ArtistTxt" runat="server"></asp:TextBox>
+    <br />
+    <asp:Label ID="errLbl" runat="server" Text=""></asp:Label>
+
+    <asp:Button ID="Button1" runat="server" Text="Update Artist" OnClick="Update_Click" />
 </asp:Content>

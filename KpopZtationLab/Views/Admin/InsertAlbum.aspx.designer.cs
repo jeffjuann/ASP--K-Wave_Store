@@ -15,22 +15,13 @@ namespace KpopZtationLab.Views.Admin
     {
 
         /// <summary>
-        /// AlbumGridView control.
+        /// ArtistImageUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AlbumGridView;
-
-        /// <summary>
-        /// AlbumImgUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload AlbumImgUpload;
+        protected global::System.Web.UI.WebControls.FileUpload ArtistImageUpload;
 
         /// <summary>
         /// Label1 control.
@@ -67,24 +58,6 @@ namespace KpopZtationLab.Views.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox AlbumDescriptionTxt;
-
-        /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-
-        /// <summary>
-        /// ArtistName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ArtistName;
 
         /// <summary>
         /// Label3 control.
@@ -132,12 +105,12 @@ namespace KpopZtationLab.Views.Admin
         protected global::System.Web.UI.WebControls.Label errLbl;
 
         /// <summary>
-        /// Button1 control.
+        /// createAlbum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button createAlbum;
     }
 }

@@ -12,7 +12,7 @@ namespace KpopZtationLab.Repository
 {
     public class AlbumRepository : IRepository<Album>
     {
-        KpopZtationDBEntities context = Database.Connection;
+        public static KpopZtationDBEntities context = Database.Connection;
         public void Save()
         {
             context.SaveChanges();
@@ -43,7 +43,7 @@ namespace KpopZtationLab.Repository
         public void Add(Album albumToAdd)
         {
             context.Albums.Add(albumToAdd);
-            Save();
+            context.SaveChanges();
         }
         public IEnumerable<Album> Find(Expression<Func<Album, bool>> predicate)
         {

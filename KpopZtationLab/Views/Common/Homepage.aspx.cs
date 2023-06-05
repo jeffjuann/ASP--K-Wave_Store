@@ -14,6 +14,7 @@ namespace KpopZtationLab.Views.Common
     public partial class Homepage : System.Web.UI.Page
     {
         protected List<Artist> artists;
+        protected string role = "ADMN";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,22 +25,48 @@ namespace KpopZtationLab.Views.Common
                     //return;
                 } 
                 artists = ArtistController.Get_All_Artist();
-                ArtistRepeater.DataSource = artists;
-                ArtistRepeater.DataBind();
+                ArtistsGridView.DataSource = artists;
+                ArtistsGridView.DataBind();
+                AdminArtistsGridView.DataSource = artists;
+                AdminArtistsGridView.DataBind();
             }
         }
 
-        protected void Delete_Artist(object sender, CommandEventArgs e)
+  
+        protected void AdminArtistsGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
-            int ID = int.Parse((string)e.CommandArgument);
+            //int index = AdminArtistsGridView.NewSelectedIndex;
+            GridViewRow row = AdminArtistsGridView.Rows[e.RowIndex];
+            int ID = int.Parse(row.Cells[0].Text);
             ArtistController.Remove(ID);
             Response.Redirect(Routes.Route.Home);
         }
-        protected void Update_Artist(object sender, CommandEventArgs e)
+
+        protected void AdminArtistsGridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            string ID = (string)e.CommandArgument;
-            Response.Redirect(Routes.Route.UpdateArtist+"?ID="+ID);
+            //int index = AdminArtistsGridView.NewEditIndex;
+            GridViewRow row = AdminArtistsGridView.Rows[e.NewEditIndex];
+            string ID = row.Cells[0].Text;
+            Response.Redirect(Routes.Route.UpdateArtist + "?ID=" + ID);
+        }
+
+        protected void AdminArtistsGridView_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = AdminArtistsGridView.Rows[e.NewSelectedIndex];
+            string ID = row.Cells[0].Text;
+            Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
+        }   
+            
+        protected void ArtistsGridView_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = ArtistsGridView.Rows[e.NewSelectedIndex];
+            string ID = row.Cells[0].Text;
+            Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
+        }
+
+        protected void CreateArtist_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Routes.Route.InsertArtist);
         }
     }
 }

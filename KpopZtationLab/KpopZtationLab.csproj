@@ -132,6 +132,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="README.txt" />
     <Content Include="Views\Admin\InsertAlbum.aspx" />
     <Content Include="Views\Admin\InsertArtists.aspx" />
     <Content Include="Views\Admin\TransactionReport.aspx" />

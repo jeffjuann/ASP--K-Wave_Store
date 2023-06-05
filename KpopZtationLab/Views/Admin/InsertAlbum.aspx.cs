@@ -12,29 +12,37 @@ namespace KpopZtationLab.Views.Admin
 {
     public partial class InsertAlbum : System.Web.UI.Page
     {
-        protected List<Album> albums = new List<Album>();
         protected Artist artist = new Artist();
+        protected int id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            
+            bool success = int.TryParse(Request.QueryString["ID"], out id);
+            if (!success)
             {
-                int id;
-                bool success = int.TryParse(Request.QueryString["ID"], out id);
-                if (!success)
-                {
-                    Response.Redirect(Routes.Route.Home);
-                }
-                artist = ArtistController.Get_Artist_By_ID(id);
-                //album depends on artist so we need the id to fetch it
-                AlbumGridView.DataSource = AlbumController.Get_All_Albums(id);
-                AlbumGridView.DataBind();
-                ArtistName.DataSource = repo.artists.Find(x => true).ToList();
-            }
+                Response.Redirect(Routes.Route.Home);
+            }   
+            artist = ArtistController.Get_Artist_By_ID(id);
+            
         }
 
-        protected void AlbumGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void createAlbum_Click(object sender, EventArgs e)
         {
-            GridViewRow row = AlbumGridView.Rows[e.NewEditIndex];
+            //validate
+            //render error if there is
+            //use controller
+            var AlbumName = AlbumNameTxt.Text;
+            var AlbumImage = ArtistController.Save_Image(ArtistImageUpload);
+            var AlbumDescription = AlbumDescriptionTxt.Text;
+            int AlbumPrice = int.Parse(AlbumPriceTxt.Text);
+            int AlbumStock = int.Parse(AlbumStockTxt.Text);
+            string err = AlbumController.Create_Album(id,AlbumName,AlbumImage,AlbumPrice,AlbumStock,AlbumDescription);
+
+            if (err != null)
+            {
+                errLbl.Text = err;
+                return;
+            }
         }
     }
 }

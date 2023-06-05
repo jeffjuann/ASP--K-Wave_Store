@@ -33,9 +33,9 @@
              <div class="right">
         <%--        <i class="fa-sharp fa-regular fa-clipboard-list"></i>
                 <i class="fa-light fa-circle-user"></i>--%>
-                 <h3>Transactions</h3>
-                 <h3>Update Profile</h3>
-                 <h3>Logout</h3>
+                 <a>Transactions</a>
+                 <a>Update Profile</a>
+                 <a>Logout</a>
             </div>
         </nav>
          <nav id="guestNavbar" runat="server">
