@@ -4,7 +4,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Cart</h1>
     <div class="left">
-        <%foreach (var cart in carts){ %>
+         <asp:GridView ID="CartGridView" runat="server" 
+            AutoGenerateColumns="false">
+            <Columns>
+                <asp:CheckBoxField headerText="Product To be checked out" />
+                <asp:BoundField HeaderText="AlbumID" DataField="AlbumID" />
+                <asp:BoundField HeaderText="ArtistID" DataField="ArtistID" />
+                <asp:ImageField DataImageUrlField="AlbumImage" HeaderText="Artist Image"/>
+                <asp:BoundField HeaderText="id" DataField="AlbumName" />
+                <asp:BoundField HeaderText="id" DataField="AlbumPrice" />
+
+ <%--               <asp:CommandField 
+                    HeaderText="Actions" 
+                    ShowDeleteButton="True" 
+                    ShowEditButton="True" 
+                    ShowSelectButton="True" />--%>
+            </Columns>
+        </asp:GridView>
+     <%--   <%foreach (var cart in carts){ %>
             <asp:CheckBox ID="chk<%=cart.AlbumID %>"/>
             <img src="<%=cart.Album.AlbumImage %>" alt="Alternate Text" />
             <div class="column">
@@ -13,7 +30,8 @@
                 <h6><%=cart.Album.AlbumPrice %> </h6>
 
             </div>
-        <%} %>
+        <%} %>--%>
+            
     </div>
     <div class="right">
         <h3>Total Transacation</h3>

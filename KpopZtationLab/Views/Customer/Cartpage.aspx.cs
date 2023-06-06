@@ -22,7 +22,24 @@ namespace KpopZtationLab.Views.Pages
                 }
                 int userID = int.Parse(Session["ID"].ToString());
                 carts = repo.carts.Find(x=>x.CustomerID==userID).ToList();
+                CartGridView.DataSource = repo.carts.Find(x => x.CustomerID == userID).ToList();
+                CartGridView.DataBind();
             }
+        }
+
+        protected void CartGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+
+        protected void CartGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
+        protected void CartGridView_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+
         }
     }
 }

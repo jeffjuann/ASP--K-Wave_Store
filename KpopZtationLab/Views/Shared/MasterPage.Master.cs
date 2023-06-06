@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-
+using KpopZtationLab.Routes;
 namespace KpopZtationLab.Views
 {
     public partial class Master : System.Web.UI.MasterPage
@@ -21,12 +21,12 @@ namespace KpopZtationLab.Views
             string classes = "";
             switch (nav)
             {
-                case "Admin":
+                case "Customer":
                     classes = customerNavbar.Attributes["class"];
                     classes = classes.Replace("hidden", "");
                     customerNavbar.Attributes["class"] = classes;
                     break;
-                case "Customer":
+                case "Admin":
                     classes = adminNavbar.Attributes["class"];
                     classes = classes.Replace("hidden", "");
                     adminNavbar.Attributes["class"] = classes;
@@ -53,7 +53,7 @@ namespace KpopZtationLab.Views
             else if (CookiesAuth != null)
             {
                 var CookiesRole = CookiesAuth["role"];
-                if (CookiesRole == "Admin")
+                if (CookiesRole == "ADMN")
                 {
                     showNavbar("Admin");
                 }
@@ -65,7 +65,8 @@ namespace KpopZtationLab.Views
             else
             {
                 var sessionAuthRole = SessionAuth.ToString();
-                if (sessionAuthRole == "Admin"){
+                if (sessionAuthRole == "ADMN")
+                {
                     showNavbar("Admin");
                  }
                 else{
@@ -77,12 +78,33 @@ namespace KpopZtationLab.Views
 
         protected void Login_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Routes.Route.Login);
+            Response.Redirect(Route.Login);
         }
 
         protected void Register_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Routes.Route.Register);
+            Response.Redirect(Route.Register);
+        }
+
+        protected void logoutBtn_Click(object sender, EventArgs e)
+        {
+            var CookiesAuth = Request.Cookies["userAuth"];
+            var SessionRole = Session["role"];
+            var SessionUser = Session["userAuth"];
+            if(CookiesAuth!=null)
+            {
+                Response.Cookies["userAuth"].Expires = DateTime.Now.AddDays(-1);
+            }
+            if(SessionRole!=null || SessionUser!=null)
+            {
+                Session.Clear();
+            }
+            Response.Redirect(Route.Home);
+        }
+
+        protected void CartBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Route.Cart);
         }
     }
 }

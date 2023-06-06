@@ -20,10 +20,10 @@
             <div class="right">
             <%--   <i class="fa-regular fa-cart-shopping"></i>
                <i class="fa-light fa-circle-user"></i>--%>
-                <h3>cart</h3>
+                <asp:Button ID="CartBtn" runat="server" Text="Cart" OnClick="CartBtn_Click" />
                 <h3>Transaction</h3>
                 <h3>Update Profile</h3>
-                <h3>Logout</h3>
+                <asp:Button ID="Button3" runat="server" Text="logout" OnClick="logoutBtn_Click"/>
             </div>
         </nav>
          <nav id="adminNavbar" runat="server">
@@ -35,7 +35,7 @@
                 <i class="fa-light fa-circle-user"></i>--%>
                  <a>Transactions</a>
                  <a>Update Profile</a>
-                 <a>Logout</a>
+                 <asp:Button ID="logoutBtn" runat="server" Text="logout" OnClick="logoutBtn_Click"/>
             </div>
         </nav>
          <nav id="guestNavbar" runat="server">
