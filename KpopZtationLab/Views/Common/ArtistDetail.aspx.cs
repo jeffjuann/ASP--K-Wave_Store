@@ -48,7 +48,7 @@ namespace KpopZtationLab.Views.Common
             GridViewRow row = AlbumListGridView.Rows[e.RowIndex];
             int ID = int.Parse(row.Cells[0].Text);
             AlbumController.Remove(ID);
-            Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
+            Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + id);
         }
 
         protected void AlbumListGridView_RowEditing(object sender, GridViewEditEventArgs e)

@@ -9,10 +9,10 @@
             <Columns>
                 <asp:CheckBoxField headerText="Product To be checked out" />
                 <asp:BoundField HeaderText="AlbumID" DataField="AlbumID" />
-                <asp:BoundField HeaderText="ArtistID" DataField="ArtistID" />
-                <asp:ImageField DataImageUrlField="AlbumImage" HeaderText="Artist Image"/>
-                <asp:BoundField HeaderText="id" DataField="AlbumName" />
-                <asp:BoundField HeaderText="id" DataField="AlbumPrice" />
+                <asp:BoundField HeaderText="CustomerID" DataField="CustomerID" />
+                <asp:ImageField DataImageUrlField="Album.AlbumImage" HeaderText="Artist Image"/>
+                <asp:BoundField HeaderText="id" DataField="Album.AlbumName" />
+                <asp:BoundField HeaderText="id" DataField="Album.AlbumPrice" />
 
  <%--               <asp:CommandField 
                     HeaderText="Actions" 

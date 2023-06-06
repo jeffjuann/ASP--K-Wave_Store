@@ -14,7 +14,7 @@ namespace KpopZtationLab.Routes
 
         public static string TransactionReport { get; private set; } = "~/Views/Admin/TransactionReportpage.aspx";
 
-        public static string Cart { get; private set; } = "~/Views/Customer/Cart.aspx";
+        public static string Cart { get; private set; } = "~/Views/Customer/Cartpage.aspx";
 
         public static string TransactionHistory { get; private set; } = "~/Views/Customer/TransactionHistory.aspx";
 

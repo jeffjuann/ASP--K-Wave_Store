@@ -15,12 +15,12 @@ namespace KpopZtationLab.Views.Pages
         {
             if (!IsPostBack)
             {
-                if (Session["userAuth"] == null || Request.Cookies["userAuth"] == null)
-                {
-                    Response.Redirect(Routes.Route.Login);
-                    return;
-                }
-                int userID = int.Parse(Session["ID"].ToString());
+                //if (Session["userAuth"] == null || Request.Cookies["userAuth"] == null)
+                //{
+                //    Response.Redirect(Routes.Route.Login);
+                //    return;
+                //}
+                int userID = int.Parse(Session["userAuth"].ToString());
                 carts = repo.carts.Find(x=>x.CustomerID==userID).ToList();
                 CartGridView.DataSource = repo.carts.Find(x => x.CustomerID == userID).ToList();
                 CartGridView.DataBind();
