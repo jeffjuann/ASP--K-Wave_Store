@@ -7,5 +7,6 @@ namespace KpopZtationLab.Handler
 {
     public class RemoveAccountHandler
     {
+
     }
 }

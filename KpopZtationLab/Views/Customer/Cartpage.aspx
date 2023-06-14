@@ -9,7 +9,7 @@
             <Columns>
                 <asp:CheckBoxField headerText="Product To be checked out" />
                 <asp:BoundField HeaderText="AlbumID" DataField="AlbumID" />
-                <asp:BoundField HeaderText="ArtistID" DataField="ArtistID" />
+                <asp:BoundField HeaderText="Artist name" DataField="Album.ArtistName" />
                 <asp:ImageField DataImageUrlField="AlbumImage" HeaderText="Artist Image"/>
                 <asp:BoundField HeaderText="id" DataField="AlbumName" />
                 <asp:BoundField HeaderText="id" DataField="AlbumPrice" />
@@ -21,16 +21,6 @@
                     ShowSelectButton="True" />--%>
             </Columns>
         </asp:GridView>
-     <%--   <%foreach (var cart in carts){ %>
-            <asp:CheckBox ID="chk<%=cart.AlbumID %>"/>
-            <img src="<%=cart.Album.AlbumImage %>" alt="Alternate Text" />
-            <div class="column">
-                <h5><%=cart.Album.AlbumName %></h5>
-                <h6><%=cart.Album.AlbumDescription %></h6>
-                <h6><%=cart.Album.AlbumPrice %> </h6>
-
-            </div>
-        <%} %>--%>
             
     </div>
     <div class="right">

@@ -26,7 +26,7 @@ namespace KpopZtationLab.Views.Common
         protected void AssignSession(Customer user)
         {
             Session["userAuth"] = user.CustomerID.ToString();
-            Session["role"] = user.CustomerRole;
+            Session["role"] = user.CustomerRole.ToString();
         }
         protected void Login_Click(object sender, EventArgs e)
         {

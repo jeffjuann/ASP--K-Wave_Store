@@ -14,7 +14,6 @@ namespace KpopZtationLab.Models
     
     public partial class Cart
     {
-        public int CartID { get; set; }
         public int CustomerID { get; set; }
         public int AlbumID { get; set; }
         public int Qty { get; set; }

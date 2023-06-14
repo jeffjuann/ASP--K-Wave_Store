@@ -32,6 +32,7 @@
             OnSelectedIndexChanging="ArtistsGridView_SelectedIndexChanging"
                 >
             <Columns>
+                <asp:BoundField HeaderText="id" DataField="ArtistID" />
                 <asp:ImageField DataImageUrlField="ArtistImage" HeaderText="Artist Image"/>
                 <asp:BoundField DataField="ArtistName" HeaderText="Artist Name" ></asp:BoundField>
                 <asp:CommandField ShowSelectButton="true" />

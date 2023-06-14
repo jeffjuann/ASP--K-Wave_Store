@@ -14,7 +14,6 @@ namespace KpopZtationLab.Models
     
     public partial class TransactionDetail
     {
-        public int TransactionDetailsID { get; set; }
         public int TransactionID { get; set; }
         public int AlbumID { get; set; }
         public int Qty { get; set; }

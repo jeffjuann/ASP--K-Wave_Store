@@ -14,7 +14,20 @@ namespace KpopZtationLab.Views.Common
     public partial class Homepage : System.Web.UI.Page
     {
         protected List<Artist> artists;
-        protected string role = "ADMN";
+        protected string role = "none";
+        protected string getRole()
+        {
+            var userCookiesAuth = Request.Cookies["userAuth"];
+            if (userCookiesAuth!=null)
+            {
+                return userCookiesAuth["role"].ToString();
+            }
+            else if(Session["role"]!=null)
+            {
+                return Session["role"].ToString();
+            }
+            return "";
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -23,7 +36,8 @@ namespace KpopZtationLab.Views.Common
                 {
                     //Response.Redirect(Routes.Route.Login);
                     //return;
-                } 
+                }
+                role = getRole();
                 artists = ArtistController.Get_All_Artist();
                 ArtistsGridView.DataSource = artists;
                 ArtistsGridView.DataBind();
@@ -57,9 +71,9 @@ namespace KpopZtationLab.Views.Common
             Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
         }   
             
-        protected void ArtistsGridView_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        protected void ArtistsGridView_SelectedIndexChanging(object  sender, GridViewSelectEventArgs e)
         {
-            GridViewRow row = ArtistsGridView.Rows[e.NewSelectedIndex];
+            GridViewRow row = AdminArtistsGridView.Rows[e.NewSelectedIndex];
             string ID = row.Cells[0].Text;
             Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
         }
