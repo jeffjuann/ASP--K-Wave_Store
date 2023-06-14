@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Album">
     <Key>
       <PropertyRef Name="AlbumID" />
@@ -21,7 +21,7 @@
     <Property Name="ArtistImage" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\OENSI\SOURCE\REPOS\KPOPZTATIONLAB\KPOPZTATIONLAB\APP_DATA\DATABASE.MDF.dbo.Cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\OENSI\SOURCE\REPOS\KPOPZTATIONLAB\KPOPZTATIONLAB\APP_DATA\DATABASE1.MDF.dbo.Cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Cart">
     <Key>
       <PropertyRef Name="CustomerID" />
@@ -45,7 +45,7 @@ warning 6002: The table/view 'C:\USERS\OENSI\SOURCE\REPOS\KPOPZTATIONLAB\KPOPZTA
     <Property Name="CustomerRole" Type="varchar" MaxLength="5" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\OENSI\SOURCE\REPOS\KPOPZTATIONLAB\KPOPZTATIONLAB\APP_DATA\DATABASE.MDF.dbo.TransactionDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\OENSI\SOURCE\REPOS\KPOPZTATIONLAB\KPOPZTATIONLAB\APP_DATA\DATABASE1.MDF.dbo.TransactionDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="TransactionDetails">
     <Key>
       <PropertyRef Name="TransactionID" />
@@ -136,7 +136,7 @@ warning 6002: The table/view 'C:\USERS\OENSI\SOURCE\REPOS\KPOPZTATIONLAB\KPOPZTA
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="DatabaseModelStoreContainer">
+  <EntityContainer Name="Database1ModelStoreContainer">
     <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />

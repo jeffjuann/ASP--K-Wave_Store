@@ -23,11 +23,13 @@
                     <h3>Quantity</h3>
                     <div class="flex-group">
                         <%--- 0 +--%>
-
+                        <asp:Button ID="decreaseProduct" runat="server" Text="-" OnClick="decreaseProduct_Click"/>
+                         <asp:TextBox ID="quantityTxt" runat="server"><%=quantity %></asp:TextBox>
+                        <asp:Button ID="addProduct" runat="server" Text="+" OnClick="addProduct_Click"/>                        <asp:Button ID="Button3" runat="server" Text="Button" />
                     </div>
                 </div>
                 <div class="flex">
-                    <asp:Button ID="Button1" runat="server" Text="Add to cart" />
+                    <asp:Button ID="addToCartBtn" runat="server" Text="Add to cart" OnClick="addToCartBtn_Click"/>
                     <asp:Button ID="Button2" runat="server" Text="Buy Now" />
                 </div>
             </div>
