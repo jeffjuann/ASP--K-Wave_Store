@@ -11,9 +11,11 @@ namespace KpopZtationLab.Views.Pages
     public partial class Cartpage : System.Web.UI.Page
     {
         protected List<Cart> carts;
-        protected void Page_Load(object sender, EventArgs e)
+
+        protected int getCurrentUserID()
         {
-            if (!IsPostBack)
+            var userCookies = Request.Cookies["userAuth"];
+            if (userCookies != null)
             {
                 return int.Parse(userCookies["id"]);
             }
@@ -35,11 +37,11 @@ namespace KpopZtationLab.Views.Pages
             //    Response.Redirect(Routes.Route.Login);
             //    return;
             //}
-                
+
             int userID = getCurrentUserID();
-            carts = repo.carts.Find(x=>x.CustomerID==userID).ToList();
+            carts = repo.carts.Find(x => x.CustomerID == userID).ToList();
             CartGridView.DataSource = repo.carts.Find(x => x.CustomerID == userID).ToList();
-            CartGridView.DataBind();    
+            CartGridView.DataBind();
         }
 
         protected void CartGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)

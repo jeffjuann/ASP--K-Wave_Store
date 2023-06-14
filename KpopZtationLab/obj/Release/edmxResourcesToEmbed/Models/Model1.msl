@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="KpopZtationDBEntities">
     <EntitySetMapping Name="Albums">
-      <EntityTypeMapping TypeName="DBModel.Album">
+      <EntityTypeMapping TypeName="DatabaseModel.Album">
         <MappingFragment StoreEntitySet="Album">
           <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
           <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
@@ -15,7 +15,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Artists">
-      <EntityTypeMapping TypeName="DBModel.Artist">
+      <EntityTypeMapping TypeName="DatabaseModel.Artist">
         <MappingFragment StoreEntitySet="Artist">
           <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
           <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
@@ -24,7 +24,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="DBModel.Customer">
+      <EntityTypeMapping TypeName="DatabaseModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
@@ -37,7 +37,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransactionHeaders">
-      <EntityTypeMapping TypeName="DBModel.TransactionHeader">
+      <EntityTypeMapping TypeName="DatabaseModel.TransactionHeader">
         <MappingFragment StoreEntitySet="TransactionHeader">
           <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
           <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
@@ -46,7 +46,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Carts">
-      <EntityTypeMapping TypeName="DBModel.Cart">
+      <EntityTypeMapping TypeName="DatabaseModel.Cart">
         <MappingFragment StoreEntitySet="Cart">
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
@@ -55,7 +55,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransactionDetails">
-      <EntityTypeMapping TypeName="DBModel.TransactionDetail">
+      <EntityTypeMapping TypeName="DatabaseModel.TransactionDetail">
         <MappingFragment StoreEntitySet="TransactionDetails">
           <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
           <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
