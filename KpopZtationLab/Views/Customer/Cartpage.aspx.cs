@@ -11,11 +11,9 @@ namespace KpopZtationLab.Views.Pages
     public partial class Cartpage : System.Web.UI.Page
     {
         protected List<Cart> carts;
-
-        protected int getCurrentUserID()
+        protected void Page_Load(object sender, EventArgs e)
         {
-            var userCookies = Request.Cookies["userAuth"];
-            if (userCookies != null)
+            if (!IsPostBack)
             {
                 return int.Parse(userCookies["id"]);
             }
