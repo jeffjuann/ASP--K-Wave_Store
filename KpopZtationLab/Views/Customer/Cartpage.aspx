@@ -14,27 +14,12 @@
                         <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Album.AlbumImage") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Album Name">
-                    <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Album.AlbumName") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Quantity">
-                    <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Qty") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Actions">
-                    <ItemTemplate>
-                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("Album.AlbumPrice") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <%--<asp:BoundField HeaderText="Album Name" DataField="Album.AlbumName" />
+                <asp:BoundField HeaderText="Album Name" DataField="Album.AlbumName" />
                 <asp:BoundField HeaderText="Quantity" DataField="Qty" />
-                <asp:BoundField HeaderText="Album Price" DataField="Album.AlbumPrice" />--%>
+                <asp:BoundField HeaderText="Album Price" DataField="Album.AlbumPrice" />
                 <asp:CommandField HeaderText="Actions" ShowDeleteButton="True" />
             </Columns>
         </asp:GridView>
-  
+        <asp:Button ID="CheckOutBtn" runat="server" Text="Checkout Cart" OnClick="CheckOutBtn_Click" />
     </div>
 </asp:Content>

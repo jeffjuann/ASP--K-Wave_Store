@@ -79,19 +79,6 @@ namespace KpopZtationLab.Views.Common
             Response.Redirect(Routes.Route.AlbumDetail + "?ID=" + ID);
         }
 
-        protected void AlbumListGridViewCstm_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            int ID = Convert.ToInt32(AlbumListGridViewCstm.DataKeys[e.RowIndex].Value);
-            AlbumController.Remove(ID);
-            Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + id);
-        }
-
-        protected void AlbumListGridViewCstm_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            int ID = Convert.ToInt32(AlbumListGridViewCstm.DataKeys[e.NewEditIndex].Value);
-            Response.Redirect(Routes.Route.UpdateAlbum + "?ID=" + ID);
-        }
-
         protected void AlbumListGridViewCstm_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             int ID = Convert.ToInt32(AlbumListGridViewCstm.DataKeys[e.NewSelectedIndex].Value);

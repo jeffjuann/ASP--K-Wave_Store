@@ -30,7 +30,7 @@ namespace KpopZtationLab.Views.Admin
             var AlbumPrice = int.Parse(AlbumPriceTxt.Text);
             var AlbumStock = int.Parse(AlbumStockTxt.Text);
             string err = AlbumController.Validate(AlbumName, AlbumDescription, AlbumPrice, AlbumStock, AlbumImageUpload);
-            if (err != null)
+            if (err != "")
             {
                 errLbl.Text = err;
                 errLbl.Visible = true;

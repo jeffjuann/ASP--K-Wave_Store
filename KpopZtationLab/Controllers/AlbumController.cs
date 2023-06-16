@@ -29,7 +29,7 @@ namespace KpopZtationLab.Controllers
 
         public static string Save_Image(FileUpload file)
         {
-            string path = "~/Assets/Images/Album/";
+            string path = "/Assets/Images/Albums/";
             string fileName = Path.GetFileName(file.PostedFile.FileName);
             string fullPath = path + fileName;
             string physicalPath = HttpContext.Current.Server.MapPath(fullPath);
@@ -49,7 +49,11 @@ namespace KpopZtationLab.Controllers
 
         public static void Remove(int id)
         {
-            Album album = repo.albums.Find(x => x.AlbumID == id).FirstOrDefault();
+            var album = repo.albums.Find(x => x.AlbumID == id).FirstOrDefault();
+            var albumCart = repo.carts.Find(x => x.AlbumID == album.AlbumID).ToList();
+            var transactionDetail = repo.transactionDetails.Find(x => x.AlbumID == album.AlbumID).ToList();
+            repo.carts.RemoveRange(albumCart);
+            repo.transactionDetails.RemoveRange(transactionDetail);
             repo.albums.Remove(album);
         }
 

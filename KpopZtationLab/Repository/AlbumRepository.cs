@@ -12,12 +12,6 @@ namespace KpopZtationLab.Repository
     {
         KpopZtationDBEntities context = Database.Connection;
 
-        public AlbumRepository()
-        {
-            context = new KpopZtationDBEntities();
-        }
-
-
         public void Update(Album updatedAlbum)
         {
             var albumToBeUpdated = context.Albums.Find(updatedAlbum.AlbumID);

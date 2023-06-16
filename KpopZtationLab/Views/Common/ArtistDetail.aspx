@@ -41,8 +41,6 @@
             <% else { %>
                    <asp:GridView ID="AlbumListGridViewCstm" runat="server"
                         AutoGenerateColumns="false"
-                        OnRowDeleting="AlbumListGridViewCstm_RowDeleting"
-                        OnRowEditing="AlbumListGridViewCstm_RowEditing"
                         OnSelectedIndexChanging="AlbumListGridViewCstm_SelectedIndexChanging"
                         DataKeyNames="AlbumID"
                        >

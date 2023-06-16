@@ -39,7 +39,7 @@ namespace KpopZtationLab.Controllers
         }
         public static string Save_Image(FileUpload file)
         {
-            string path = "~/Assets/Images/Artists/";
+            string path = "/Assets/Images/Artists/";
             string fileName = Path.GetFileName(file.PostedFile.FileName);
             string fullPath = path + fileName;
             string physicalPath = HttpContext.Current.Server.MapPath(fullPath);
@@ -50,6 +50,14 @@ namespace KpopZtationLab.Controllers
         public static void Remove(int id)
         {
             var artist = repo.artists.Find(x=>x.ArtistID == id).FirstOrDefault();
+            var artistAlbum = repo.albums.Find(x => x.ArtistID == artist.ArtistID).ToList();
+            var albumCarts = repo.carts.Find(x => x.AlbumID == artist.ArtistID).ToList();
+            //optional
+            var transactionDetails = repo.transactionDetails.Find(x => x.Album.ArtistID == artist.ArtistID).ToList();
+            //begin deleting
+            repo.albums.RemoveRange(artistAlbum);
+            repo.carts.RemoveRange(albumCarts);
+            repo.transactionDetails.RemoveRange(transactionDetails);
             repo.artists.Remove(artist);
         }
 

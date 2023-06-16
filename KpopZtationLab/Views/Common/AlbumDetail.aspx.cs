@@ -66,6 +66,7 @@ namespace KpopZtationLab.Views.Common
                 return;
             }
             CartController.Add(userID, album.AlbumID, selectedQuantity);
+            Response.Redirect(Routes.Route.Cart);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace KpopZtationLab.Views.Admin
             var image = ArtistController.Save_Image(ArtistImageUpload);
             var artist = ArtistFactory.Create(name, image);
             repo.artists.Add(artist);
-            artists = ArtistController.Get_All_Artist();
+            Response.Redirect(Routes.Route.Home);
         }
     }
 }

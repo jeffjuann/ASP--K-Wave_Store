@@ -9,7 +9,7 @@
     <h2>Update Artist Data</h2>
     <br />
     <h5>Artist's Image</h5>
-    <asp:FileUpload ID="ArtistImageUpload" runat="server" visible="true"/>
+    <asp:FileUpload ID="ArtistImageUpload" runat="server" EnableViewState="true"/>
     <h5>Artist's Name</h5>
     <asp:TextBox ID="ArtistTxt" runat="server"></asp:TextBox>
     <br />
