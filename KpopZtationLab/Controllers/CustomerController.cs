@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using KpopZtationLab.Pattern;
+using KpopZtationLab.Handler;
 
 namespace KpopZtationLab.Controllers
 {
@@ -12,7 +13,7 @@ namespace KpopZtationLab.Controllers
     {
         public static Customer getUserByID(int id)
         {
-            return repo.customers.Find(x => x.CustomerID == id).FirstOrDefault();
+           return CustomerHandler.getUserById(id);
         }
         public static bool Name_Length_Between_5_To_50(string name)
         {
@@ -21,7 +22,7 @@ namespace KpopZtationLab.Controllers
 
         public static bool Email_IsUnique(string email)
         {
-            return repo.customers.Find(x => x.CustomerEmail == email).Count() == 0;
+            return CustomerHandler.email_IsUnique(email);
         }
         public static bool Gender_IsSelected(string value)
         {
@@ -35,13 +36,12 @@ namespace KpopZtationLab.Controllers
 
         public static bool Password_IsAlphanumeric(string password)
         {
-            return password.All(character => char.IsLetterOrDigit(character)) && password != "";
+            return CustomerHandler.password_IsAlphanumeric(password);
         }
 
         public static void Register(string email, string name, string gender, string address, string password)
         {
-            Customer newCustomer = CustomerFactory.Create(email, name, password, address, gender, "Customer");
-            repo.customers.Add(newCustomer);
+            CustomerHandler.register(email, name, gender, address, password);
         }
         public static string Validate(string email, string name, string gender, string address, string password)
         {
@@ -71,16 +71,7 @@ namespace KpopZtationLab.Controllers
         }
         public static void Update(int id, string email, string name, string gender, string address, string password)
         {
-            var user = repo.customers.Find(x => x.CustomerID == id).FirstOrDefault();
-            if(user!=null)
-            {
-                user.CustomerName = name;
-                user.CustomerEmail = email;
-                user.CustomerGender = gender;
-                user.CustomerPassword = password;
-                user.CustomerAddress = address;
-                repo.customers.Update(user);
-            }
+            CustomerHandler.update(id, email, name, gender, address, password);
         }
     }
 }

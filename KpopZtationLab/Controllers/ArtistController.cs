@@ -6,6 +6,7 @@ using System.Web;
 using System.IO;
 using System.Web.UI.WebControls;
 using KpopZtationLab.Pattern;
+using KpopZtationLab.Handler;
 
 namespace KpopZtationLab.Controllers
 {
@@ -15,7 +16,7 @@ namespace KpopZtationLab.Controllers
         public static bool Artist_IsUnique(string artistName)
         {
             if (artistName == "") return false;
-            return repo.artists.Find(x=>x.ArtistName == artistName ).Count()==0;
+            return ArtistHandler.artist_IsUnique(artistName);
         }
 
         public static bool Image_Less_Than_2mb(FileUpload file)
@@ -30,38 +31,26 @@ namespace KpopZtationLab.Controllers
 
         public static Artist Get_Artist_By_ID(int id)
         {
-            return repo.artists.Find(x => x.ArtistID == id).FirstOrDefault();
+            return ArtistHandler.get_Artist_By_ID(id);
         }
 
         public static List<Artist> Get_All_Artist()
         {
-            return repo.artists.Find(x=>true).ToList();
+            return ArtistHandler.get_All_Artist();
         }
         public static string Save_Image(FileUpload file)
         {
-            string path = "/Assets/Images/Artists/";
-            string fileName = Path.GetFileName(file.PostedFile.FileName);
-            string fullPath = path + fileName;
-            string physicalPath = HttpContext.Current.Server.MapPath(fullPath);
-            file.PostedFile.SaveAs(physicalPath);
-            return fullPath;
+            return ArtistHandler.saveImage(file);
         }
 
         public static void Remove(int id)
         {
-            var artist = repo.artists.Find(x=>x.ArtistID == id).FirstOrDefault();
-            repo.artists.Remove(artist);
+            ArtistHandler.remove(id);
         }
 
         public static void Update(int id,string name,string imageURL)
         {
-            var artist = repo.artists.Find(x => x.ArtistID == id).FirstOrDefault();
-            if(artist!=null)
-            {
-                artist.ArtistName = name;
-                artist.ArtistImage = imageURL;
-                repo.artists.Update(artist);
-            }
+            ArtistHandler.update(id, name, imageURL);
         }
     }
 }

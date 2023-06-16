@@ -15,7 +15,7 @@ namespace KpopZtationLab.Controllers
     {
         public static bool Album_IsUnique(string albumName)
         {
-            return repo.albums.Find(x=>x.AlbumName==albumName).Count()==0;
+            return AlbumHandler.Album_Check_Unique(albumName);
         }
 
         public static bool Image_Less_Than_2mb()
@@ -24,7 +24,7 @@ namespace KpopZtationLab.Controllers
         }
         public static List<Album> Get_All_Albums(int artistID)
         {
-            return repo.albums.Find(x => x.ArtistID == artistID).ToList();
+            return AlbumHandler.getAlbum(artistID);
         }
 
         public static string Save_Image(FileUpload file)
@@ -41,16 +41,14 @@ namespace KpopZtationLab.Controllers
         {
             //operasi pengecekan belom
 
-            Album album = AlbumFactory.Create(ArtistID, AlbumName, AlbumImage, AlbumPrice, AlbumStock, AlbumDescription);
-            AlbumHandler.Add(album);
+            AlbumHandler.Add(ArtistID, AlbumName, AlbumImage, AlbumPrice, AlbumStock, AlbumDescription);
             return "";
         }
 
 
         public static void Remove(int id)
         {
-            Album album = repo.albums.Find(x => x.AlbumID == id).FirstOrDefault();
-            repo.albums.Remove(album);
+            AlbumHandler.Remove(id);
         }
     }
 }

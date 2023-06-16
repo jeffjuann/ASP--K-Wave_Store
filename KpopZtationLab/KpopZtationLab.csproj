@@ -163,7 +163,11 @@
     <Compile Include="Factory\TransactionDetailsFactory.cs" />
     <Compile Include="Factory\TransactionHeaderFactory.cs" />
     <Compile Include="Handler\AlbumHandler.cs" />
+    <Compile Include="Handler\ArtistHandler.cs" />
+    <Compile Include="Handler\AuthenticationHandler.cs" />
+    <Compile Include="Handler\CartHandler.cs" />
     <Compile Include="Handler\CheckOutHandler.cs" />
+    <Compile Include="Handler\CustomerHandler.cs" />
     <Compile Include="Handler\RemoveAccountHandler.cs" />
     <Compile Include="Interface\IRepository.cs" />
     <Compile Include="Models\Album.cs">
