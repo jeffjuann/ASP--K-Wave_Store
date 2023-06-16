@@ -17,15 +17,13 @@ namespace KpopZtationLab.Repository
         public void Add(Cart entity)
         {
             context.Carts.Add(entity);
-            Save();
-
+            context.SaveChanges();
         }
 
         public void AddRange(List<Cart> entities)
         {
             context.Carts.AddRange(entities);
-            Save();
-
+            context.SaveChanges();
         }
 
         public IEnumerable<Cart> Find(Expression<Func<Cart, bool>> predicate)
@@ -36,28 +34,24 @@ namespace KpopZtationLab.Repository
         public void Remove(Cart entity)
         {
             context.Carts.Remove(entity);
-            Save();
-
+            context.SaveChanges();
         }
 
         public void RemoveRange(List<Cart> entities)
         {
             context.Carts.RemoveRange(entities);
-            Save();
+            context.SaveChanges();
 
         }
 
-        public void Save()
-        {
-          context.SaveChanges();
-        }
+
         public void Update(Cart updatedCart)
         {
-            var cartToBeUpdated = Find(x=>x.AlbumID == updatedCart.AlbumID && x.AlbumID == updatedCart.AlbumID).FirstOrDefault();
+            var cartToBeUpdated = Find(x=>x.AlbumID == updatedCart.AlbumID && x.CustomerID == updatedCart.CustomerID).FirstOrDefault();
             if (cartToBeUpdated != null)
             {
                 cartToBeUpdated.Qty = updatedCart.Qty;
-                Save();
+                context.SaveChanges();
             }
         }
     }

@@ -15,7 +15,7 @@
             <br />
         </div>
         <div class="right" runat="server">
-            <%if (role == "ADMN")
+            <%if (role == "ADMN") 
                 { %>
                     <asp:Button ID="InsertAlbum" runat="server" Text="Insert New Album" OnClick="NavigateToInsertAlbum_Click" />
                     <asp:GridView ID="AlbumListGridView" runat="server"
@@ -37,12 +37,12 @@
                         </Columns>
                     </asp:GridView>
             <% }%>
-            <%else { %>
-                 <asp:GridView ID="GridView1" runat="server"
+            <% else { %>
+                   <asp:GridView ID="AlbumListGridViewCstm" runat="server"
                         AutoGenerateColumns="false"
-                        OnRowDeleting="AlbumListGridView_RowDeleting"
-                        OnRowEditing="AlbumListGridView_RowEditing"
-                        OnSelectedIndexChanging="AlbumListGridView_SelectedIndexChanging">
+                        OnRowDeleting="AlbumListGridViewCstm_RowDeleting"
+                        OnRowEditing="AlbumListGridViewCstm_RowEditing"
+                        OnSelectedIndexChanging="AlbumListGridViewCstm_SelectedIndexChanging">
                         <Columns>
                             <asp:BoundField HeaderText="id" DataField="AlbumID" />
                             <asp:ImageField DataImageUrlField="AlbumImage" HeaderText="Album Image"/>
@@ -51,11 +51,11 @@
                             <asp:BoundField DataField="AlbumPrice" HeaderText="Album Price" />
                             <asp:CommandField 
                                 HeaderText="Actions" 
+                                ShowDeleteButton="True" 
+                                ShowEditButton="True" 
                                 ShowSelectButton="True" />
                         </Columns>
-                    </asp:GridView>
-
-
+                   </asp:GridView>
             <%} %>
         </div>
     </div>

@@ -26,17 +26,13 @@ namespace KpopZtationLab.Views.Common
             {
                 return Session["role"].ToString();
             }
+            Response.Redirect(Routes.Route.Login);
             return "";
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["userAuth"] == null || Request.Cookies["userAuth"] == null)
-                {
-                    //Response.Redirect(Routes.Route.Login);
-                    //return;
-                }
                 role = getRole();
                 artists = ArtistController.Get_All_Artist();
                 ArtistsGridView.DataSource = artists;

@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using KpopZtationLab.Models;
-using KpopZtationLab.Factory;
-using KpopZtationLab.Pattern;
-using KpopZtationLab.Interface;
 using System.Linq.Expressions;
+using KpopZtationLab.Interface;
+using KpopZtationLab.Models;
 
 namespace KpopZtationLab.Repository
 {
     public class AlbumRepository : IRepository<Album>
     {
-        public static KpopZtationDBEntities context = Database.Connection;
+        private KpopZtationDBEntities context;
+
+        public AlbumRepository()
+        {
+            context = new KpopZtationDBEntities();
+        }
+
         public void Save()
         {
             context.SaveChanges();
@@ -20,7 +23,7 @@ namespace KpopZtationLab.Repository
 
         public void Update(Album updatedAlbum)
         {
-            var albumToBeUpdated = Find(x=>x.AlbumID == updatedAlbum.AlbumID).FirstOrDefault();
+            var albumToBeUpdated = context.Albums.Find(updatedAlbum.AlbumID);
             if (albumToBeUpdated != null)
             {
                 albumToBeUpdated.AlbumDescription = updatedAlbum.AlbumDescription;
@@ -35,19 +38,20 @@ namespace KpopZtationLab.Repository
 
         public int NextID()
         {
-            if(context.Albums.Count() == 0)
+            if (context.Albums.Count() == 0)
                 return 0;
-            return context.Albums.Max(x=>x.AlbumID)+1;
+            return context.Albums.Max(x => x.AlbumID) + 1;
         }
 
         public void Add(Album albumToAdd)
         {
             context.Albums.Add(albumToAdd);
-            context.SaveChanges();
+            Save();
         }
+
         public IEnumerable<Album> Find(Expression<Func<Album, bool>> predicate)
         {
-            return context.Albums.Where(predicate.Compile());
+            return context.Albums.Where(predicate);
         }
 
         public void AddRange(List<Album> entities)
@@ -68,5 +72,9 @@ namespace KpopZtationLab.Repository
             Save();
         }
 
+        public void Dispose()
+        {
+            context.Dispose();
+        }
     }
 }

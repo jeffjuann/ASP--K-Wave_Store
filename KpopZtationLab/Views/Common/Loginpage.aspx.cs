@@ -15,7 +15,7 @@ namespace KpopZtationLab.Views.Common
         {
            
         }
-        protected void AssignCookies(Customer user)
+        protected void AssignCookies(Models.Customer user)
         {
             HttpCookie cookie = new HttpCookie("userAuth");
             cookie["id"] = user.CustomerID.ToString();
@@ -23,7 +23,7 @@ namespace KpopZtationLab.Views.Common
             cookie.Expires = DateTime.Now.AddMinutes(60);
             Response.Cookies.Add(cookie);
         }
-        protected void AssignSession(Customer user)
+        protected void AssignSession(Models.Customer user)
         {
             Session["userAuth"] = user.CustomerID.ToString();
             Session["role"] = user.CustomerRole.ToString();

@@ -8,9 +8,10 @@ namespace KpopZtationLab.Factory
 {
     public class TransactionDetailsFactory
     {
-        public static TransactionDetail Create(int AlbumID, int Qty)
+        public static TransactionDetail Create(int transactionHeaderID,int AlbumID, int Qty)
         {
             var transaction = new TransactionDetail();
+            transaction.TransactionID = transactionHeaderID;
             transaction.AlbumID = AlbumID;
             transaction.Qty = Qty;
             return transaction;

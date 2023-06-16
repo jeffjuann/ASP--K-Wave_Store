@@ -23,11 +23,26 @@ namespace KpopZtationLab.Views.Common
                     Response.Redirect(Routes.Route.Home);
                     return;
                 }
+                //role = getRole();
                 artist = ArtistController.Get_Artist_By_ID(id);
                 //album depends on artist so we need the id to fetch it
                 albums = AlbumController.Get_All_Albums(id);
                 AlbumListGridView.DataSource = AlbumController.Get_All_Albums(id);
                 AlbumListGridView.DataBind();
+        }
+
+        protected string getRole()
+        {
+            var userCookiesAuth = Request.Cookies["userAuth"];
+            if (userCookiesAuth != null)
+            {
+                return userCookiesAuth["role"].ToString();
+            }
+            else if (Session["role"] != null)
+            {
+                return Session["role"].ToString();
+            }
+            return "";
         }
 
 
@@ -61,6 +76,28 @@ namespace KpopZtationLab.Views.Common
         protected void AlbumListGridView_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = AlbumListGridView.Rows[e.NewSelectedIndex];
+            int ID = int.Parse(row.Cells[0].Text);
+            Response.Redirect(Routes.Route.AlbumDetail + "?ID=" + ID);
+        }
+
+        protected void AlbumListGridViewCstm_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = AlbumListGridViewCstm.Rows[e.RowIndex];
+            int ID = int.Parse(row.Cells[0].Text);
+            AlbumController.Remove(ID);
+            Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + id);
+        }
+
+        protected void AlbumListGridViewCstm_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRow row = AlbumListGridViewCstm.Rows[e.NewEditIndex];
+            int ID = int.Parse(row.Cells[0].Text);
+            Response.Redirect(Routes.Route.UpdateAlbum + "?ID=" + ID);
+        }
+
+        protected void AlbumListGridViewCstm_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = AlbumListGridViewCstm.Rows[e.NewSelectedIndex];
             int ID = int.Parse(row.Cells[0].Text);
             Response.Redirect(Routes.Route.AlbumDetail + "?ID=" + ID);
         }

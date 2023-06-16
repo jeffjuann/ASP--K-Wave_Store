@@ -13,36 +13,31 @@ namespace KpopZtationLab.Views.Common
 {
     public partial class AlbumDetail : System.Web.UI.Page
     {
-        public int quantity = 0;
-        public Artist artist = new Artist();
         public Album album = new Album();
-        public List<Album> albums = new List<Album>();
         protected void Page_Load(object sender, EventArgs e)
         {
             //dapetin data user
-
-            int artistID = int.Parse(Request.QueryString["ArtistID"]);
-            int albumID = int.Parse(Request.QueryString["AlbumID"]);
-            artist = repo.artists.Find(x => x.ArtistID == artistID).FirstOrDefault();
+            int albumID = int.Parse(Request.QueryString["ID"]);
             album = repo.albums.Find(x => x.AlbumID == albumID).FirstOrDefault();
-            albums = repo.albums.Find(x => x.ArtistID == artistID).Where(x=>x.AlbumID!=albumID).ToList();
         }
 
-        protected void decreaseProduct_Click(object sender, EventArgs e)
-        {
-            if(quantity>0)
-            {
-                quantity -= 1;
-            }
-        }
+        //protected void decreaseProduct_Click(object sender, EventArgs e)
+        //{
+        //    if(quantity>0)
+        //    {
+        //        quantity -= 1;
+        //        quantityTxt.Text = quantity.ToString();
+        //    }
+        //}
 
-        protected void addProduct_Click(object sender, EventArgs e)
-        {
-            if(quantity<=album.AlbumStock)
-            {
-                quantity += 1;
-            }
-        }
+        //protected void addProduct_Click(object sender, EventArgs e)
+        //{
+        //    if(quantity<=album.AlbumStock)
+        //    {
+        //        quantity += 1;
+        //        quantityTxt.Text = quantity.ToString();
+        //    }
+        //}
         protected int getCurrentUserID()
         {
             var userCookies = Request.Cookies["userAuth"];
@@ -61,9 +56,12 @@ namespace KpopZtationLab.Views.Common
         }
         protected void addToCartBtn_Click(object sender, EventArgs e)
         {
-            //int userID = getCurrentUserID();
-            //CartController.Add(userID,album.AlbumID,quantity);
-           
+            int userID = getCurrentUserID();
+            int selectedQuantity = int.Parse(QuantityTxt.Text);
+            if (selectedQuantity > 0 && selectedQuantity<=album.AlbumStock)
+            {
+                CartController.Add(userID, album.AlbumID, selectedQuantity);
+            }
         }
     }
 }

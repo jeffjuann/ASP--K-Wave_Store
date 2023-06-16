@@ -5,21 +5,17 @@
     <h1>Cart</h1>
     <div class="left">
          <asp:GridView ID="CartGridView" runat="server" 
+             OnRowDeleting="CartGridView_RowDeleting"
             AutoGenerateColumns="false">
             <Columns>
-                <asp:CheckBoxField headerText="Product To be checked out" />
-                <asp:BoundField HeaderText="AlbumID" DataField="AlbumID" />
-
-                <asp:BoundField HeaderText="CustomerID" DataField="CustomerID" />
-                <asp:ImageField DataImageUrlField="Album.AlbumImage" HeaderText="Artist Image"/>
-                <asp:BoundField HeaderText="id" DataField="Album.AlbumName" />
-                <asp:BoundField HeaderText="id" DataField="Album.AlbumPrice" />
-
- <%--               <asp:CommandField 
+                <asp:BoundField HeaderText="Album ID" DataField="Album.AlbumID" />
+                <%--<asp:ImageField DataImageUrlField="Album.AlbumImage" HeaderText="Album Image"/>--%>
+                <asp:BoundField HeaderText="Album Name" DataField="Album.AlbumName" />
+                <asp:BoundField HeaderText="Quantity" DataField="Qty" />
+                <asp:BoundField HeaderText="Album Price" DataField="Album.AlbumPrice" />
+                <asp:CommandField 
                     HeaderText="Actions" 
-                    ShowDeleteButton="True" 
-                    ShowEditButton="True" 
-                    ShowSelectButton="True" />--%>
+                    ShowDeleteButton="True" />
             </Columns>
         </asp:GridView>
             
@@ -29,6 +25,6 @@
         <h4>Sub Price: </h4>
         <h4>Tax: 10%</h4>
         <h4>Total Price: 110$</h4>
-        <asp:Button ID="Button1" runat="server" Text="Check Out" />
+        <asp:Button ID="CheckOutBtn" runat="server" Text="Check Out" OnClick="CheckOutBtn_Click"/>
     </div>
 </asp:Content>

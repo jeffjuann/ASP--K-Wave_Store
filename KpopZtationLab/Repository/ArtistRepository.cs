@@ -1,39 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using KpopZtationLab.Models;
-using KpopZtationLab.Factory;
-using KpopZtationLab.Pattern;
-using KpopZtationLab.Interface;
 using System.Linq.Expressions;
-using System.Data.Entity.Validation;
+using KpopZtationLab.Interface;
+using KpopZtationLab.Models;
 
 namespace KpopZtationLab.Repository
 {
-
-    public class ArtistRepository:IRepository<Artist>
+    public class ArtistRepository : IRepository<Artist>
     {
-        KpopZtationDBEntities context = Database.Connection;
+        private KpopZtationDBEntities context;
+
+        public ArtistRepository()
+        {
+            context = new KpopZtationDBEntities();
+        }
 
         public void Save()
         {
-           context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // Handle or log the exception
+                throw;
+            }
         }
+
         public void Add(Artist artistToAdd)
         {
             context.Artists.Add(artistToAdd);
             Save();
         }
+
         public int NextID()
         {
             if (context.Artists.Count() == 0)
                 return 0;
             return context.Artists.Max(x => x.ArtistID) + 1;
         }
+
         public void Update(Artist updatedArtist)
         {
-            var artistToBeUpdated = Find(x=>x.ArtistID == updatedArtist.ArtistID).FirstOrDefault();
+            var artistToBeUpdated = context.Artists.Find(updatedArtist.ArtistID);
             if (artistToBeUpdated != null)
             {
                 artistToBeUpdated.ArtistName = updatedArtist.ArtistName;
@@ -50,7 +61,7 @@ namespace KpopZtationLab.Repository
 
         public IEnumerable<Artist> Find(Expression<Func<Artist, bool>> predicate)
         {
-            return context.Artists.Where(predicate.Compile());
+            return context.Artists.Where(predicate);
         }
 
         public void RemoveRange(List<Artist> entities)
@@ -63,6 +74,11 @@ namespace KpopZtationLab.Repository
         {
             context.Artists.AddRange(entities);
             Save();
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }
