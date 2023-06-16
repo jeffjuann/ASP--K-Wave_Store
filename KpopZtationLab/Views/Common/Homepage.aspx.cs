@@ -26,7 +26,6 @@ namespace KpopZtationLab.Views.Common
             {
                 return Session["role"].ToString();
             }
-            Response.Redirect(Routes.Route.Login);
             return "";
         }
         protected void Page_Load(object sender, EventArgs e)

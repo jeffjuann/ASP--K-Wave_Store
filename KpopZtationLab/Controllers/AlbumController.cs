@@ -53,9 +53,9 @@ namespace KpopZtationLab.Controllers
             repo.albums.Remove(album);
         }
 
-        public static void Update(int albumID,string albumName,string albumImage,string albumDescription,int albumPrice,int albumStock)
+        public static void Update(int id, string albumName, string albumImage, string albumDescription, int albumPrice, int albumStock)
         {
-            var album = repo.albums.Find(x => x.AlbumID == albumID).FirstOrDefault(); 
+            var album = repo.albums.Find(x => x.AlbumID == id).FirstOrDefault(); 
             if(album!=null)
             {
                 album.AlbumName = albumName;

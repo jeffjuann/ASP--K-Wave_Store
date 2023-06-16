@@ -20,6 +20,8 @@ namespace KpopZtationLab.Views.Common
             //dapetin data user
             int albumID = int.Parse(Request.QueryString["ID"]);
             album = repo.albums.Find(x => x.AlbumID == albumID).FirstOrDefault();
+            role = getRole();
+
         }
 
         protected string getRole()
@@ -33,8 +35,7 @@ namespace KpopZtationLab.Views.Common
             {
                 return Session["role"].ToString();
             }
-            Response.Redirect(Routes.Route.Login);
-            return "";
+            return "None";
         }
         protected int getCurrentUserID()
         {
@@ -54,7 +55,6 @@ namespace KpopZtationLab.Views.Common
         }
         protected void addToCartBtn_Click(object sender, EventArgs e)
         {
-            role = getRole();
             int userID = getCurrentUserID();
             int selectedQuantity = int.Parse(QuantityTxt.Text);
             ErrorLbl.Visible = false;

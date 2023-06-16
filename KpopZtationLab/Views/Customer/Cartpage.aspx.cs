@@ -43,7 +43,7 @@ namespace KpopZtationLab.Views.Pages
             int albumID = int.Parse(row.Cells[0].Text);
             int userID = getCurrentUserID();
             CartController.Remove(userID, albumID);
-            Response.Redirect(Routes.Route.Cart);
+            Response.Redirect(Routes.Route.Home);
         }
 
 

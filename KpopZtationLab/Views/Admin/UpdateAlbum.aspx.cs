@@ -17,6 +17,10 @@ namespace KpopZtationLab.Views.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             bool success = int.TryParse(Request.QueryString["ID"], out id);
+            if (success)
+            {
+                album = repo.albums.Find(x => x.AlbumID == id).FirstOrDefault();
+            }
         }
 
         protected void updateAlbum_Click(object sender, EventArgs e)
