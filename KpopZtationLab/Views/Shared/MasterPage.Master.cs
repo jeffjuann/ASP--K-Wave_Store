@@ -101,20 +101,26 @@ namespace KpopZtationLab.Views
             }
             Response.Redirect(Route.Home);
         }
+        protected int getCurrentUserID()
+        {
+            var userCookies = Request.Cookies["userAuth"];
+            if (userCookies != null)
+            {
+                return int.Parse(userCookies["id"]);
+            }
+            else if (Session["userAuth"] != null)
+            {
+                var userID = Session["userAuth"].ToString();
+                return int.Parse(userID);
+            }
 
+            Response.Redirect(Routes.Route.Home);
+            return 0; // Return a default value or choose an appropriate alternative.
+        }
         protected void CartBtn_Click(object sender, EventArgs e)
         {
-            var CookiesAuth = Request.Cookies["userAuth"];
-            var SessionRole = Session["role"];
-            var SessionUser = Session["userAuth"];
-            if (CookiesAuth != null)
-            {
-                Response.Redirect(Route.Cart + "?ID=" + CookiesAuth["ID"].ToString());
-            }
-            if (SessionRole != null || SessionUser != null)
-            {
-                Response.Redirect(Route.Cart + "?ID=" + SessionUser.ToString());
-            }
+            int id = getCurrentUserID();
+            Response.Redirect(Route.Cart + "?ID=" + id);
             Response.Redirect(Route.Home);
         }
     }

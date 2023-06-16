@@ -51,8 +51,6 @@
                             <asp:BoundField DataField="AlbumPrice" HeaderText="Album Price" />
                             <asp:CommandField 
                                 HeaderText="Actions" 
-                                ShowDeleteButton="True" 
-                                ShowEditButton="True" 
                                 ShowSelectButton="True" />
                         </Columns>
                    </asp:GridView>

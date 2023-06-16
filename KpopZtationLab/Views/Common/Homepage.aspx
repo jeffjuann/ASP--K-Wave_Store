@@ -18,6 +18,7 @@
             <Columns>
                 <asp:BoundField HeaderText="id" DataField="ArtistID" />
                 <asp:ImageField DataImageUrlField="ArtistImage" HeaderText="Artist Image"/>
+                <asp:BoundField HeaderText="Artist Name" DataField="ArtistName" />
                 <asp:CommandField 
                     HeaderText="Actions" 
                     ShowDeleteButton="True" 
@@ -34,7 +35,7 @@
             <Columns>
                 <asp:BoundField HeaderText="id" DataField="ArtistID" />
                 <asp:ImageField DataImageUrlField="ArtistImage" HeaderText="Artist Image"/>
-                <asp:BoundField DataField="ArtistName" HeaderText="Artist Name" ></asp:BoundField>
+                <asp:BoundField HeaderText="Artist Name" DataField="ArtistName" />
                 <asp:CommandField ShowSelectButton="true" />
             </Columns>
         </asp:GridView>

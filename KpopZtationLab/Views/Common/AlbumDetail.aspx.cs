@@ -47,7 +47,7 @@ namespace KpopZtationLab.Views.Common
             }
             else if (Session["userAuth"] != null)
             {
-                var userID = Session["userAuth"].ToString();
+                var userID = Session["userAuth"].ToString();    
                 return int.Parse(userID);
             }
 

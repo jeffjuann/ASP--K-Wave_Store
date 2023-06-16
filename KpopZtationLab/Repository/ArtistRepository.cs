@@ -4,35 +4,18 @@ using System.Linq;
 using System.Linq.Expressions;
 using KpopZtationLab.Interface;
 using KpopZtationLab.Models;
+using KpopZtationLab.Pattern;
 
 namespace KpopZtationLab.Repository
 {
     public class ArtistRepository : IRepository<Artist>
     {
-        private KpopZtationDBEntities context;
-
-        public ArtistRepository()
-        {
-            context = new KpopZtationDBEntities();
-        }
-
-        public void Save()
-        {
-            try
-            {
-                context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                // Handle or log the exception
-                throw;
-            }
-        }
+        KpopZtationDBEntities context = Database.Connection;
 
         public void Add(Artist artistToAdd)
         {
             context.Artists.Add(artistToAdd);
-            Save();
+            context.SaveChanges();
         }
 
         public int NextID()
@@ -49,14 +32,15 @@ namespace KpopZtationLab.Repository
             {
                 artistToBeUpdated.ArtistName = updatedArtist.ArtistName;
                 artistToBeUpdated.ArtistImage = updatedArtist.ArtistImage;
-                Save();
+                context.SaveChanges();
             }
         }
 
         public void Remove(Artist entity)
         {
             context.Artists.Remove(entity);
-            Save();
+            context.SaveChanges();
+
         }
 
         public IEnumerable<Artist> Find(Expression<Func<Artist, bool>> predicate)
@@ -67,13 +51,13 @@ namespace KpopZtationLab.Repository
         public void RemoveRange(List<Artist> entities)
         {
             context.Artists.RemoveRange(entities);
-            Save();
+            context.SaveChanges();
         }
 
         public void AddRange(List<Artist> entities)
         {
             context.Artists.AddRange(entities);
-            Save();
+            context.SaveChanges();
         }
 
         public void Dispose()

@@ -17,14 +17,14 @@ namespace KpopZtationLab.Repository
         public void Add(TransactionDetail entity)
         {
             context.TransactionDetails.Add(entity);
-            Save();
+            context.SaveChanges();
 
         }
 
         public void AddRange(List<TransactionDetail> entities)
         {
             context.TransactionDetails.AddRange(entities);
-            Save();
+            context.SaveChanges();
 
         }
 
@@ -36,21 +36,17 @@ namespace KpopZtationLab.Repository
         public void Remove(TransactionDetail entity)
         {
             context.TransactionDetails.Remove(entity);
-            Save();
+            context.SaveChanges();
 
         }
 
         public void RemoveRange(List<TransactionDetail> entities)
         {
             context.TransactionDetails.RemoveRange(entities);
-            Save();
-
-        }
-
-        public void Save()
-        {
             context.SaveChanges();
+
         }
+
 
         public void Update(TransactionDetail entity)
         {
@@ -58,7 +54,7 @@ namespace KpopZtationLab.Repository
             if (TdToBeUpdated != null)
             {
                 TdToBeUpdated.Qty = entity.Qty;
-                Save();
+                context.SaveChanges();
             }
         }
     }

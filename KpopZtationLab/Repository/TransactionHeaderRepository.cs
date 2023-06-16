@@ -17,14 +17,14 @@ namespace KpopZtationLab.Repository
         public void Add(TransactionHeader entity)
         {
             context.TransactionHeaders.Add(entity);
-            Save();
+            context.SaveChanges();
 
         }
 
         public void AddRange(List<TransactionHeader> entities)
         {
             context.TransactionHeaders.AddRange(entities);
-            Save();
+            context.SaveChanges();
 
         }
 
@@ -42,20 +42,15 @@ namespace KpopZtationLab.Repository
         public void Remove(TransactionHeader entity)
         {
             context.TransactionHeaders.Remove(entity);
-            Save();
+            context.SaveChanges();
 
         }
 
         public void RemoveRange(List<TransactionHeader> entities)
         {
             context.TransactionHeaders.RemoveRange(entities);
-            Save();
+            context.SaveChanges();
 
-        }
-
-        public void Save()
-        {
-           context.SaveChanges();
         }
 
         public void Update(TransactionHeader entity)
@@ -66,7 +61,7 @@ namespace KpopZtationLab.Repository
                 ThToBeUpdated.TransactionID = entity.TransactionID;
                 ThToBeUpdated.TransactionDate = entity.TransactionDate;
                 ThToBeUpdated.CustomerID = entity.CustomerID;
-                Save();
+                context.SaveChanges();
             }
         }
     }

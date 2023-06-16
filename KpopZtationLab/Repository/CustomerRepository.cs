@@ -16,13 +16,13 @@ namespace KpopZtationLab.Repository
         public void Add(Customer entity)
         {
             context.Customers.Add(entity);
-            Save();
+            context.SaveChanges();
         }
 
         public void AddRange(List<Customer> entities)
         {
             context.Customers.AddRange(entities);
-            Save();
+            context.SaveChanges();
 
         }
 
@@ -40,21 +40,17 @@ namespace KpopZtationLab.Repository
         public void Remove(Customer entity)
         {
             context.Customers.Remove(entity);
-            Save();
+            context.SaveChanges();
 
         }
 
         public void RemoveRange(List<Customer> entities)
         {
             context.Customers.RemoveRange(entities);
-            Save();
-
-        }
-
-        public void Save()
-        {
             context.SaveChanges();
+
         }
+
         public void Update(Customer updatedCustomer)
         {
             var customerToBeUpdated = Find(x=>x.CustomerID == updatedCustomer.CustomerID).FirstOrDefault();
@@ -66,7 +62,7 @@ namespace KpopZtationLab.Repository
                 customerToBeUpdated.CustomerPassword = updatedCustomer.CustomerPassword;
                 customerToBeUpdated.CustomerRole = updatedCustomer.CustomerRole;
                 customerToBeUpdated.CustomerGender = updatedCustomer.CustomerGender;
-                Save();
+                context.SaveChanges();
             }
         }
     }

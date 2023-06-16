@@ -22,6 +22,7 @@
                <i class="fa-light fa-circle-user"></i>--%>
                 <asp:Button ID="CartBtn" runat="server" Text="Cart" OnClick="CartBtn_Click" />
                 <h3>Transaction</h3>
+
                 <h3>Update Profile</h3>
                 <asp:Button ID="Button3" runat="server" Text="logout" OnClick="logoutBtn_Click"/>
             </div>

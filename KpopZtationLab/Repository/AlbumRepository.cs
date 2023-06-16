@@ -4,12 +4,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using KpopZtationLab.Interface;
 using KpopZtationLab.Models;
+using KpopZtationLab.Pattern;
 
 namespace KpopZtationLab.Repository
 {
     public class AlbumRepository : IRepository<Album>
     {
-        private KpopZtationDBEntities context;
+        KpopZtationDBEntities context = Database.Connection;
 
         public AlbumRepository()
         {
