@@ -15,7 +15,7 @@ namespace KpopZtationLab.Controllers
         public static bool Artist_IsUnique(string artistName)
         {
             if (artistName == "") return false;
-            return repo.artists.Find(x=>x.ArtistName == artistName ).Count()==0;
+            return repo.artists.Find(x=>x.ArtistName == artistName).Count()==0;
         }
 
         public static bool Image_Less_Than_2mb(FileUpload file)
@@ -62,6 +62,21 @@ namespace KpopZtationLab.Controllers
                 artist.ArtistImage = imageURL;
                 repo.artists.Update(artist);
             }
+        }
+
+        public static string Validate(string name,FileUpload ArtistImageUpload)
+        {
+            if (!Artist_IsUnique(name))
+            {
+                return "artist is not unique";
+            };
+            if (
+                !Image_Less_Than_2mb(ArtistImageUpload)
+                && file_IsImageExtension(ArtistImageUpload))
+            {
+                return "File must be less than 2mb and an image type";
+            };
+            return "";
         }
     }
 }

@@ -52,5 +52,29 @@ namespace KpopZtationLab.Controllers
             Album album = repo.albums.Find(x => x.AlbumID == id).FirstOrDefault();
             repo.albums.Remove(album);
         }
+
+        public static void Update(int albumID,string albumName,string albumImage,string albumDescription,int albumPrice,int albumStock)
+        {
+            var album = repo.albums.Find(x => x.AlbumID == albumID).FirstOrDefault(); 
+            if(album!=null)
+            {
+                album.AlbumName = albumName;
+                album.AlbumDescription = albumDescription;
+                album.AlbumPrice = albumPrice;
+                album.AlbumStock = albumStock;
+                album.AlbumImage = albumImage;
+                repo.albums.Update(album);
+            }
+        }
+
+        public static string Validate(string albumName, string albumDescription, int albumPrice, int albumStock,FileUpload image)
+        {
+            if(!Album_IsUnique(albumName))
+            {
+                return "album name must be unique";
+            }
+            //sisanya belom
+            return "";
+        }
     }
 }

@@ -15,13 +15,13 @@ namespace KpopZtationLab.Views.Admin
     {
 
         /// <summary>
-        /// ArtistImg control.
+        /// ArtistImageUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload ArtistImg;
+        protected global::System.Web.UI.WebControls.FileUpload ArtistImageUpload;
 
         /// <summary>
         /// ArtistTxt control.

@@ -53,5 +53,11 @@ namespace KpopZtationLab.Controllers
             }
             repo.carts.RemoveRange(cartTobeCheckout);
         }
+        public static string ValidateQuantity(int quantity, int maxQuantity)
+        {
+            if (quantity == 0) return "quantity must not be 0";
+            if (quantity > maxQuantity) return "quantity must not go above " + maxQuantity;
+            return "";
+        }
     }
 }

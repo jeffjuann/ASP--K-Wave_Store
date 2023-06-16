@@ -35,21 +35,13 @@ namespace KpopZtationLab.Views.Admin
         {
             var name = ArtistTxt.Text;
             errLbl.Visible = false;
-            if (!ArtistController.Artist_IsUnique(name))
+            string err = ArtistController.Validate(name, ArtistImageUpload);
+            if(err!="")
             {
+                errLbl.Text = err;
                 errLbl.Visible = true;
-                errLbl.Text = "artist is not unique";
                 return;
-
-            };
-            if (
-                !ArtistController.Image_Less_Than_2mb(ArtistImageUpload)
-                && ArtistController.file_IsImageExtension(ArtistImageUpload))
-            {
-                errLbl.Visible = true;
-                errLbl.Text = "File must be less than 2mb and an image type";
-                return;
-            };
+            }
             var image = ArtistController.Save_Image(ArtistImageUpload);
             var artist = ArtistFactory.Create(name, image);
             repo.artists.Add(artist);

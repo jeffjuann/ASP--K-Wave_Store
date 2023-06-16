@@ -19,35 +19,23 @@ namespace KpopZtationLab.Views.Admin
         {
 
             bool success = int.TryParse(Request.QueryString["ID"], out id);
-            if (success)
-            {
-                artist = repo.artists.Find(x => x.ArtistID == id).FirstOrDefault();
-                ArtistTxt.Text = artist.ArtistName;
-            }
-            
         }
 
         protected void Update_Click(object sender, EventArgs e)
         {
-            var name = ArtistTxt.Text;
             errLbl.Visible = false;
-            if (!ArtistController.Artist_IsUnique(name))
+            string err = ArtistController.Validate(ArtistTxt.Text, ArtistImageUpload);
+            if (err != "")
             {
+                errLbl.Text = err;
                 errLbl.Visible = true;
-                errLbl.Text = "artist is not unique";
                 return;
-
-            };
-            if (
-                !ArtistController.Image_Less_Than_2mb(ArtistImg)
-                && ArtistController.file_IsImageExtension(ArtistImg))
-            {
-                errLbl.Visible = true;
-                errLbl.Text = "File must be less than 2mb and an image type";
-                return;
-            };
-            var image = ArtistController.Save_Image(ArtistImg);
-            ArtistController.Update(id,name, image);
+            }
+            var image = ArtistController.Save_Image(ArtistImageUpload);
+            ArtistController.Update(id, ArtistTxt.Text, image);
+            Response.Redirect(Routes.Route.Home);
+            //errLbl.Visible = true;
+            //errLbl.Text = repo.artists.Find(x => x.ArtistName == name).Count().ToString();
         }
     }
 }
