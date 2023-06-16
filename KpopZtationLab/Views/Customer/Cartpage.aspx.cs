@@ -31,13 +31,6 @@ namespace KpopZtationLab.Views.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //if (Session["userAuth"] == null || Request.Cookies["userAuth"] == null)
-            //{
-            //    Response.Redirect(Routes.Route.Login);
-            //    return;
-            //}
-
             int userID = getCurrentUserID();
             carts = repo.carts.Find(x => x.CustomerID == userID).ToList();
             CartGridView.DataSource = repo.carts.Find(x => x.CustomerID == userID).ToList();
@@ -58,7 +51,7 @@ namespace KpopZtationLab.Views.Pages
         {
             int id = getCurrentUserID();
             CartController.CheckOut(id);
-            Response.Redirect(Routes.Route.Cart);
+            Response.Redirect(Routes.Route.Home);
         }
 
     }

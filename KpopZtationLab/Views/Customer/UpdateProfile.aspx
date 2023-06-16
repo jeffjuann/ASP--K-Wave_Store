@@ -28,5 +28,5 @@
     <br />
     <asp:Label ID="ErrorLbl" runat="server" Text="ErrLbl" Visible="false">No User Found</asp:Label>
     <br />
-    <asp:Button ID="Save" runat="server" Text="Save Changes"/>
+    <asp:Button ID="Save" runat="server" Text="Save Changes" OnClick="Save_Click"/>
 </asp:Content>

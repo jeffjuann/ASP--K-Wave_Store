@@ -14,18 +14,17 @@ namespace KpopZtationLab.Views.Admin
     public partial class UpdateArtists : System.Web.UI.Page
     {
         protected Artist artist;
-        int id;
+        protected int id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+
+            bool success = int.TryParse(Request.QueryString["ID"], out id);
+            if (success)
             {
-                bool success = int.TryParse(Request.QueryString["ID"], out id);
-                if (success)
-                {
-                    artist = repo.artists.Find(x => x.ArtistID == id).FirstOrDefault();
-                    ArtistTxt.Text = artist.ArtistName;
-                }
+                artist = repo.artists.Find(x => x.ArtistID == id).FirstOrDefault();
+                ArtistTxt.Text = artist.ArtistName;
             }
+            
         }
 
         protected void Update_Click(object sender, EventArgs e)
@@ -48,8 +47,7 @@ namespace KpopZtationLab.Views.Admin
                 return;
             };
             var image = ArtistController.Save_Image(ArtistImg);
-            var artist = ArtistFactory.Create(name, image);
-            repo.artists.Update(artist);
+            ArtistController.Update(id,name, image);
         }
     }
 }

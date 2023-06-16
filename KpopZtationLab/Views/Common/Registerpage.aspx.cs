@@ -23,13 +23,14 @@ namespace KpopZtationLab.Views.Common
             string address = AddressTxt.Text;
             string password = PasswordTxt.Text;
             ErrorLbl.Visible = false;
-            string err = RegistrationController.Validate(email,name,gender, address,password);
-            if (err == "")
+            string err = CustomerController.Validate(email,name,gender, address,password);
+            if (err != "")
             {
-                RegistrationController.Register(email, name, gender, address, password);
+                ErrorLbl.Text = err;
+                ErrorLbl.Visible = true;
+                return;
             }
-            ErrorLbl.Text = err;
-            ErrorLbl.Visible = true;
+            CustomerController.Register(email, name, gender, address, password);
         }
     }
 }

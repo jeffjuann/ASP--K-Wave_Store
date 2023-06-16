@@ -14,6 +14,5 @@
     <asp:TextBox ID="ArtistTxt" runat="server"></asp:TextBox>
     <br />
     <asp:Label ID="errLbl" runat="server" Text=""></asp:Label>
-
     <asp:Button ID="Button1" runat="server" Text="Update Artist" OnClick="Update_Click" />
 </asp:Content>
