@@ -7,15 +7,6 @@
         <h1>List Of Existing</h1>
     </div>
     <div class="flex">
-        <div class="left" runat="server">
-            <%--render list of artists--%>
-            <% foreach (var artist in artists){ %>
-                <div class="flex" href="/Views/Admin/InsertArtists?ID=<%=artist.ArtistID %>">
-                    <img src="<%=artist.ArtistImage%>" alt="Alternate Text" width="250"/>
-                    <h3><%=artist.ArtistName%></h3>
-                </div>
-            <%} %>
-        </div>
         <div class="right">
             <h2>Create New Artist</h2>
             <div class="flex">

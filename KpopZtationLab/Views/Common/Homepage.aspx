@@ -14,9 +14,9 @@
             OnRowDeleting="AdminArtistsGridView_RowDeleting"
             OnRowEditing="AdminArtistsGridView_RowEditing"
             OnSelectedIndexChanging="AdminArtistsGridView_SelectedIndexChanging"
+            DataKeyNames="ArtistID"
                 >
             <Columns>
-                <asp:BoundField HeaderText="id" DataField="ArtistID" />
                 <asp:ImageField DataImageUrlField="ArtistImage" HeaderText="Artist Image"/>
                 <asp:BoundField HeaderText="Artist Name" DataField="ArtistName" />
                 <asp:CommandField 
@@ -31,9 +31,9 @@
             <asp:GridView ID="ArtistsGridView" runat="server" 
             AutoGenerateColumns="false"
             OnSelectedIndexChanging="ArtistsGridView_SelectedIndexChanging"
+            DataKeyNames="ArtistID"
                 >
             <Columns>
-                <asp:BoundField HeaderText="id" DataField="ArtistID" />
                 <asp:ImageField DataImageUrlField="ArtistImage" HeaderText="Artist Image"/>
                 <asp:BoundField HeaderText="Artist Name" DataField="ArtistName" />
                 <asp:CommandField ShowSelectButton="true" />

@@ -33,7 +33,7 @@ namespace KpopZtationLab.Views.Pages
         {
             int userID = getCurrentUserID();
             carts = repo.carts.Find(x => x.CustomerID == userID).ToList();
-            CartGridView.DataSource = repo.carts.Find(x => x.CustomerID == userID).ToList();
+            CartGridView.DataSource = carts;
             CartGridView.DataBind();
         }
 

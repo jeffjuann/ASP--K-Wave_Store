@@ -19,6 +19,8 @@ namespace KpopZtationLab.Views.Customer
             AddressTxt.Text = user.CustomerAddress;
             PasswordTxt.Text = user.CustomerPassword;
             GenderRB.SelectedValue = user.CustomerGender;
+            ErrorLbl.Visible = false;
+
         }
         protected int getCurrentUserID()
         {

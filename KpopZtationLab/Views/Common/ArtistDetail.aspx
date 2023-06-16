@@ -22,10 +22,11 @@
                         AutoGenerateColumns="false"
                         OnRowDeleting="AlbumListGridView_RowDeleting"
                         OnRowEditing="AlbumListGridView_RowEditing"
-                        OnSelectedIndexChanging="AlbumListGridView_SelectedIndexChanging">
+                        OnSelectedIndexChanging="AlbumListGridView_SelectedIndexChanging"
+                        DataKeyNames="AlbumID"
+                        >
                         <Columns>
-                            <asp:BoundField HeaderText="id" DataField="AlbumID" />
-                            <asp:ImageField DataImageUrlField="AlbumImage" HeaderText="Album Image"/>
+                            <asp:ImageField DataImageUrlField="AlbumImage" HeaderText="Album Image" ItemStyle-Height="250px" ItemStyle-Width="250px"/>
                             <asp:BoundField DataField="AlbumName" HeaderText="Album Name" />
                             <asp:BoundField DataField="AlbumDescription" HeaderText="Album Description" />
                             <asp:BoundField DataField="AlbumPrice" HeaderText="Album Price" />
@@ -42,9 +43,10 @@
                         AutoGenerateColumns="false"
                         OnRowDeleting="AlbumListGridViewCstm_RowDeleting"
                         OnRowEditing="AlbumListGridViewCstm_RowEditing"
-                        OnSelectedIndexChanging="AlbumListGridViewCstm_SelectedIndexChanging">
+                        OnSelectedIndexChanging="AlbumListGridViewCstm_SelectedIndexChanging"
+                        DataKeyNames="AlbumID"
+                       >
                         <Columns>
-                            <asp:BoundField HeaderText="id" DataField="AlbumID" />
                             <asp:ImageField DataImageUrlField="AlbumImage" HeaderText="Album Image"/>
                             <asp:BoundField DataField="AlbumName" HeaderText="Album Name" />
                             <asp:BoundField DataField="AlbumDescription" HeaderText="Album Description" />

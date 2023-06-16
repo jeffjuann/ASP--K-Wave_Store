@@ -29,7 +29,7 @@ namespace KpopZtationLab.Controllers
 
         public static string Save_Image(FileUpload file)
         {
-            string path = "/Assets/Images/Artists/";
+            string path = "~/Assets/Images/Album/";
             string fileName = Path.GetFileName(file.PostedFile.FileName);
             string fullPath = path + fileName;
             string physicalPath = HttpContext.Current.Server.MapPath(fullPath);
