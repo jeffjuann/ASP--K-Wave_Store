@@ -32,17 +32,18 @@ namespace KpopZtationLab.Views.Admin
             //render error if there is
             //use controller
             var AlbumName = AlbumNameTxt.Text;
-            var AlbumImage = ArtistController.Save_Image(ArtistImageUpload);
             var AlbumDescription = AlbumDescriptionTxt.Text;
             int AlbumPrice = int.Parse(AlbumPriceTxt.Text);
             int AlbumStock = int.Parse(AlbumStockTxt.Text);
-            string err = AlbumController.Create_Album(id,AlbumName,AlbumImage,AlbumPrice,AlbumStock,AlbumDescription);
-
-            if (err != null)
+            string err = AlbumController.Validate(AlbumName, AlbumDescription, AlbumPrice, AlbumStock, AlbumImageUpload);
+            if (err != "")
             {
                 errLbl.Text = err;
+                errLbl.Visible = true;
                 return;
             }
+            var AlbumImage = AlbumController.Save_Image(AlbumImageUpload);
+            AlbumController.Create_Album(id,AlbumName,AlbumImage,AlbumPrice,AlbumStock,AlbumDescription);
         }
     }
 }

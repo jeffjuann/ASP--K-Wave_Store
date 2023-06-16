@@ -12,16 +12,6 @@ namespace KpopZtationLab.Repository
     {
         KpopZtationDBEntities context = Database.Connection;
 
-        public AlbumRepository()
-        {
-            context = new KpopZtationDBEntities();
-        }
-
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
         public void Update(Album updatedAlbum)
         {
             var albumToBeUpdated = context.Albums.Find(updatedAlbum.AlbumID);
@@ -33,7 +23,7 @@ namespace KpopZtationLab.Repository
                 albumToBeUpdated.AlbumStock = updatedAlbum.AlbumStock;
                 albumToBeUpdated.ArtistID = updatedAlbum.ArtistID;
                 albumToBeUpdated.AlbumImage = updatedAlbum.AlbumImage;
-                Save();
+                context.SaveChanges();
             }
         }
 
@@ -47,7 +37,7 @@ namespace KpopZtationLab.Repository
         public void Add(Album albumToAdd)
         {
             context.Albums.Add(albumToAdd);
-            Save();
+            context.SaveChanges();
         }
 
         public IEnumerable<Album> Find(Expression<Func<Album, bool>> predicate)
@@ -58,19 +48,19 @@ namespace KpopZtationLab.Repository
         public void AddRange(List<Album> entities)
         {
             context.Albums.AddRange(entities);
-            Save();
+            context.SaveChanges();
         }
 
         public void Remove(Album entity)
         {
             context.Albums.Remove(entity);
-            Save();
+            context.SaveChanges();
         }
 
         public void RemoveRange(List<Album> entities)
         {
             context.Albums.RemoveRange(entities);
-            Save();
+            context.SaveChanges();
         }
 
         public void Dispose()

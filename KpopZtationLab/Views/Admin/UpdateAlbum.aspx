@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <h2>Insert an Album</h2>
             <br />
-            <asp:FileUpload ID="ArtistImageUpload" runat="server" />
+            <asp:FileUpload ID="AlbumImageUpload" runat="server" EnableViewState="true"/>
             <br />
             <%--textbox isi attributes dari album--%>
             <%--name--%>

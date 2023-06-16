@@ -12,13 +12,17 @@ namespace KpopZtationLab.Views.Customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id = getCurrentUserID();
-            var user = CustomerController.getUserByID(id);
-            EmailTxt.Text = user.CustomerEmail;
-            NameTxt.Text = user.CustomerName;
-            AddressTxt.Text = user.CustomerAddress;
-            PasswordTxt.Text = user.CustomerPassword;
-            GenderRB.SelectedValue = user.CustomerGender;
+            if (!IsPostBack)
+            {
+                int id = getCurrentUserID();
+                var user = CustomerController.getUserByID(id);
+                EmailTxt.Text = user.CustomerEmail;
+                NameTxt.Text = user.CustomerName;
+                AddressTxt.Text = user.CustomerAddress;
+                PasswordTxt.Text = user.CustomerPassword;
+                GenderRB.SelectedValue = user.CustomerGender;
+                ErrorLbl.Visible = false;
+            }
         }
         protected int getCurrentUserID()
         {

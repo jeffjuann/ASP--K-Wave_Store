@@ -28,6 +28,11 @@ namespace KpopZtationLab.Handler
             }
         }
 
+        public static void create(Artist artistToAdd)
+        {
+            repo.artists.Add(artistToAdd);
+        }
+
         public static string saveImage(FileUpload file)
         {
             string path = "/Assets/Images/Artists/";

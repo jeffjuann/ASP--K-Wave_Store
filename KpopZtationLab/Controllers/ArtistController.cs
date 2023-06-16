@@ -34,6 +34,12 @@ namespace KpopZtationLab.Controllers
             return ArtistHandler.get_Artist_By_ID(id);
         }
 
+        public static void Create_Artist(Artist artistToAdd)
+        {
+
+            ArtistHandler.create(artistToAdd);
+        }
+
         public static List<Artist> Get_All_Artist()
         {
             return ArtistHandler.get_All_Artist();
@@ -45,12 +51,37 @@ namespace KpopZtationLab.Controllers
 
         public static void Remove(int id)
         {
-            ArtistHandler.remove(id);
+            var artist = repo.artists.Find(x=>x.ArtistID == id).FirstOrDefault();
+            repo.artists.Remove(artist);
         }
 
         public static void Update(int id,string name,string imageURL)
         {
             ArtistHandler.update(id, name, imageURL);
+        }
+        private static bool IsImageSelected(FileUpload file)
+        {
+            return file != null && file.HasFile;
+        }
+        public static string Validate(string name,FileUpload ArtistImageUpload)
+        {
+            if (!Artist_IsUnique(name))
+            {
+                return "artist is not unique";
+            };
+            if (
+                !Image_Less_Than_2mb(ArtistImageUpload)
+                && file_IsImageExtension(ArtistImageUpload))
+            {
+                return "File must be less than 2mb and an image type";
+            };
+
+            if (!IsImageSelected(ArtistImageUpload))
+            {
+                return "An image must be chosen.";
+            }
+
+            return "";
         }
     }
 }

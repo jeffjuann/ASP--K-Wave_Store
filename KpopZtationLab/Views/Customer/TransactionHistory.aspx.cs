@@ -32,7 +32,8 @@ namespace KpopZtationLab.Views.Pages
             int id = getCurrentUserID();
             //ini harusnya array
             var transactionDetails = repo.transactionDetails.Find(x => x.TransactionHeader.CustomerID==id).ToList();
-            
+            TransactionHistoryGridView.DataSource = transactionDetails;
+            TransactionHistoryGridView.DataBind();
         }
     }
 }

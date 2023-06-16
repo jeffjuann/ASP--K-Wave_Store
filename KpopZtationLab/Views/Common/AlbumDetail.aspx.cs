@@ -14,30 +14,29 @@ namespace KpopZtationLab.Views.Common
     public partial class AlbumDetail : System.Web.UI.Page
     {
         public Album album = new Album();
+        public string role = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             //dapetin data user
             int albumID = int.Parse(Request.QueryString["ID"]);
-            album = repo.albums.Find(x => x.AlbumID == albumID).FirstOrDefault();
+            album = AlbumController.Get_album_by_id(albumID);
+            role = getRole();
+
         }
 
-        //protected void decreaseProduct_Click(object sender, EventArgs e)
-        //{
-        //    if(quantity>0)
-        //    {
-        //        quantity -= 1;
-        //        quantityTxt.Text = quantity.ToString();
-        //    }
-        //}
-
-        //protected void addProduct_Click(object sender, EventArgs e)
-        //{
-        //    if(quantity<=album.AlbumStock)
-        //    {
-        //        quantity += 1;
-        //        quantityTxt.Text = quantity.ToString();
-        //    }
-        //}
+        protected string getRole()
+        {
+            var userCookiesAuth = Request.Cookies["userAuth"];
+            if (userCookiesAuth != null)
+            {
+                return userCookiesAuth["role"].ToString();
+            }
+            else if (Session["role"] != null)
+            {
+                return Session["role"].ToString();
+            }
+            return "None";
+        }
         protected int getCurrentUserID()
         {
             var userCookies = Request.Cookies["userAuth"];
@@ -58,10 +57,16 @@ namespace KpopZtationLab.Views.Common
         {
             int userID = getCurrentUserID();
             int selectedQuantity = int.Parse(QuantityTxt.Text);
-            if (selectedQuantity > 0 && selectedQuantity<=album.AlbumStock)
+            ErrorLbl.Visible = false;
+            string err = CartController.ValidateQuantity(selectedQuantity, album.AlbumStock);
+            if(err!="")
             {
-                CartController.Add(userID, album.AlbumID, selectedQuantity);
+                ErrorLbl.Text = err;
+                ErrorLbl.Visible = true;
+                return;
             }
+            CartController.Add(userID, album.AlbumID, selectedQuantity);
+            Response.Redirect(Routes.Route.Cart);
         }
     }
 }

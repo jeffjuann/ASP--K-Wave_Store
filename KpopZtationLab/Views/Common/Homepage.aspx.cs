@@ -26,7 +26,6 @@ namespace KpopZtationLab.Views.Common
             {
                 return Session["role"].ToString();
             }
-            Response.Redirect(Routes.Route.Login);
             return "";
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -46,8 +45,7 @@ namespace KpopZtationLab.Views.Common
         protected void AdminArtistsGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             //int index = AdminArtistsGridView.NewSelectedIndex;
-            GridViewRow row = AdminArtistsGridView.Rows[e.RowIndex];
-            int ID = int.Parse(row.Cells[0].Text);
+            int ID = Convert.ToInt32(AdminArtistsGridView.DataKeys[e.RowIndex].Value);
             ArtistController.Remove(ID);
             Response.Redirect(Routes.Route.Home);
         }
@@ -55,22 +53,19 @@ namespace KpopZtationLab.Views.Common
         protected void AdminArtistsGridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
             //int index = AdminArtistsGridView.NewEditIndex;
-            GridViewRow row = AdminArtistsGridView.Rows[e.NewEditIndex];
-            string ID = row.Cells[0].Text;
+            int ID = Convert.ToInt32(AdminArtistsGridView.DataKeys[e.NewEditIndex].Value);
             Response.Redirect(Routes.Route.UpdateArtist + "?ID=" + ID);
         }
 
         protected void AdminArtistsGridView_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            GridViewRow row = AdminArtistsGridView.Rows[e.NewSelectedIndex];
-            string ID = row.Cells[0].Text;
+            int ID = Convert.ToInt32(AdminArtistsGridView.DataKeys[e.NewSelectedIndex].Value);
             Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
         }   
             
         protected void ArtistsGridView_SelectedIndexChanging(object  sender, GridViewSelectEventArgs e)
         {
-            GridViewRow row = AdminArtistsGridView.Rows[e.NewSelectedIndex];
-            string ID = row.Cells[0].Text;
+            int ID = Convert.ToInt32(ArtistsGridView.DataKeys[e.NewSelectedIndex].Value);
             Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
         }
 

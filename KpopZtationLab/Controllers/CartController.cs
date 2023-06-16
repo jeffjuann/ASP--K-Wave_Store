@@ -29,5 +29,16 @@ namespace KpopZtationLab.Controllers
         {
             CartHandler.checkOut(id);
         }
+        public static string ValidateQuantity(int quantity, int maxQuantity)
+        {
+            if (quantity == 0) return "quantity must not be 0";
+            if (quantity > maxQuantity) return "quantity must not go above " + maxQuantity;
+            return "";
+        }
+
+        public static List<Cart> Get_user_by_id(int userID)
+        {
+            return repo.carts.Find(x => x.CustomerID == userID).ToList();
+        }
     }
 }

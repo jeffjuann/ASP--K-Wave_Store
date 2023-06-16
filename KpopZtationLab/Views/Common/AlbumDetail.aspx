@@ -21,15 +21,25 @@
                     <h3>Quantity</h3>
                     <div class="flex-group">
                         <%--- 0 +--%>
-                        <%--<asp:Button ID="decreaseProduct" runat="server" Text="-" OnClick="decreaseProduct_Click"/>--%>
-                        <asp:TextBox ID="QuantityTxt" runat="server" Text="20"></asp:TextBox>
-                        <%--<asp:Button ID="addProduct" runat="server" Text="+" OnClick="addProduct_Click"/>--%>                        
+                        <%if (role == "CSTM" || role == "ADMN")
+                            { %>
+                              <asp:TextBox ID="QuantityTxt" runat="server" Text="0"></asp:TextBox>
+                              <asp:Label ID="ErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
+
+
+                        <%} %>
+                        <%else
+                            { %>
+                               <asp:TextBox ID="TextBox1" runat="server" Text="0" Enabled="false"></asp:TextBox>
+                        <%} %>
                     </div>
                 </div>
+                <%if (role == "CSTM" || role == "ADMN")
+                    { %>
                 <div class="flex">
                     <asp:Button ID="addToCartBtn" runat="server" Text="Add to cart" OnClick="addToCartBtn_Click"/>
-                    <asp:Button ID="Button2" runat="server" Text="Buy Now" />
                 </div>
+                <%} %>
             </div>
         </main>
     </div>

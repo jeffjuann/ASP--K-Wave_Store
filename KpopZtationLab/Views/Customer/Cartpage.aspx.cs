@@ -32,8 +32,8 @@ namespace KpopZtationLab.Views.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             int userID = getCurrentUserID();
-            carts = repo.carts.Find(x => x.CustomerID == userID).ToList();
-            CartGridView.DataSource = repo.carts.Find(x => x.CustomerID == userID).ToList();
+            carts = CartController.Get_user_by_id(userID);
+            CartGridView.DataSource = carts;
             CartGridView.DataBind();
         }
 
@@ -43,7 +43,7 @@ namespace KpopZtationLab.Views.Pages
             int albumID = int.Parse(row.Cells[0].Text);
             int userID = getCurrentUserID();
             CartController.Remove(userID, albumID);
-            Response.Redirect(Routes.Route.Cart);
+            Response.Redirect(Routes.Route.Home);
         }
 
 
