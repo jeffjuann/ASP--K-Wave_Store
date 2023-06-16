@@ -7,6 +7,7 @@ using System.Web;
 using KpopZtationLab.Factory;
 using System.Web.UI.WebControls;
 using System.IO;
+using KpopZtationLab.Handler;
 
 namespace KpopZtationLab.Controllers
 {
@@ -38,8 +39,10 @@ namespace KpopZtationLab.Controllers
 
         public static string Create_Album(int ArtistID, string AlbumName, string AlbumImage, int AlbumPrice, int AlbumStock, string AlbumDescription)
         {
+            //operasi pengecekan belom
+
             Album album = AlbumFactory.Create(ArtistID, AlbumName, AlbumImage, AlbumPrice, AlbumStock, AlbumDescription);
-            repo.albums.Add(album);
+            AlbumHandler.Add(album);
             return "";
         }
 
