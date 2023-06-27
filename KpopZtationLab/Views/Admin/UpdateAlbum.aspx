@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <h2>Insert an Album</h2>
+     <h2>Update an Album</h2>
             <br />
             <asp:FileUpload ID="AlbumImageUpload" runat="server" EnableViewState="true"/>
             <br />

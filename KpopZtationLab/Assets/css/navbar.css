@@ -4,39 +4,41 @@
 
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
-    text-decoration:none;
-    color:black;
+    text-decoration: none;
 }
 
 nav {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 48px;
+    padding: 16px 32px;
     background-color: #0062CC;
-    padding: 1rem;
-    align-items:center;
-    color:white;
+    color: white;
 }
 
 nav .left {
-    font-family: 'K2D SemiBold', sans-serif !important;
-    padding:auto 0;
+    height: auto;
 }
-nav .left h1 {
-    margin: auto 0 !important;
+
+nav .left a {
+    color: white;
+    font-weight: bolder;
 }
+
 nav .right {
-    display: flex;
-    gap: 1rem;
-
+display: flex;
+gap: 1rem;
 }
 
-nav .right .navbarButton {
+.navButton {
     color: #0062CC;
     background: white;
-    border-radius: 15px;
-    padding:1rem 2rem;
+    border-radius: 8px;
+    padding: 8px 16px;
+    border: none;
 }

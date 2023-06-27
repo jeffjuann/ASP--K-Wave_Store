@@ -13,18 +13,15 @@
 </head>
 <body>  
     <form id="form1" runat="server">
-        <nav id="customerNavbar" runat="server">
+        <nav id="customerNavbar" runat="server" >
             <div class="left">
                <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
             </div>
             <div class="right">
-            <%--   <i class="fa-regular fa-cart-shopping"></i>
-               <i class="fa-light fa-circle-user"></i>--%>
-<%--                <asp:Button ID="CartBtn" runat="server" Text="Cart" OnClick="CartBtn_Click" />--%>
-                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Views/Customer/Cartpage.aspx">Cart</asp:HyperLink>
-                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Views/Customer/TransactionHistory.aspx">Transaction History</asp:HyperLink>
-                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Views/Customer/UpdateProfile.aspx">Update Profile</asp:HyperLink>
-                <asp:Button ID="Button3" runat="server" Text="logout" OnClick="logoutBtn_Click"/>
+                <asp:HyperLink class="navButton" ID="HyperLink1" runat="server" NavigateUrl="~/Views/Customer/Cartpage.aspx">Cart</asp:HyperLink>
+                <asp:HyperLink class="navButton" ID="HyperLink2" runat="server" NavigateUrl="~/Views/Customer/TransactionHistory.aspx">Transaction History</asp:HyperLink>
+                <asp:HyperLink class="navButton" ID="HyperLink3" runat="server" NavigateUrl="~/Views/Customer/UpdateProfile.aspx">Update Profile</asp:HyperLink>
+                <asp:Button class="navButton" ID="Button3" runat="server" Text="logout" OnClick="logoutBtn_Click" />
             </div>
         </nav>
          <nav id="adminNavbar" runat="server">
@@ -32,9 +29,9 @@
                <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
             </div>            
              <div class="right">
-                 <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Views/Admin/TransactionReport.aspx">Transaction Report</asp:HyperLink>
-                 <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Views/Customer/UpdateProfile.aspx">Update Profile</asp:HyperLink>
-                 <asp:Button ID="logoutBtn" runat="server" Text="logout" OnClick="logoutBtn_Click"/>
+                 <asp:HyperLink class="navButton" ID="HyperLink5" runat="server" NavigateUrl="~/Views/Admin/TransactionReport.aspx">Transaction Report</asp:HyperLink>
+                 <asp:HyperLink class="navButton" ID="HyperLink6" runat="server" NavigateUrl="~/Views/Customer/UpdateProfile.aspx">Update Profile</asp:HyperLink>
+                 <asp:Button class="navButton" ID="logoutBtn" runat="server" Text="logout" OnClick="logoutBtn_Click" />
             </div>
         </nav>
          <nav id="guestNavbar" runat="server">
@@ -42,8 +39,8 @@
                <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
              </div>            
              <div class="right">
-                <asp:Button class="navbarButton" ID="Button1" runat="server" Text="Login" OnClick="Login_Click"/>
-                <asp:Button class="navbarButton" ID="Button2" runat="server" Text="Register" OnClick="Register_Click"/>
+                <asp:Button class="navButton" ID="Button1" runat="server" Text="Login" OnClick="Login_Click"/>
+                <asp:Button class="navButton" ID="Button2" runat="server" Text="Register" OnClick="Register_Click"/>
             </div>
         </nav>
 

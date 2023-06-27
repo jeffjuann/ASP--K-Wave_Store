@@ -15,6 +15,15 @@ namespace KpopZtationLab.Views.Common
     {
 
         /// <summary>
+        /// AdminAlbumsRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater AdminAlbumsRepeater;
+
+        /// <summary>
         /// InsertAlbum control.
         /// </summary>
         /// <remarks>
@@ -22,23 +31,5 @@ namespace KpopZtationLab.Views.Common
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button InsertAlbum;
-
-        /// <summary>
-        /// AlbumListGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AlbumListGridView;
-
-        /// <summary>
-        /// AlbumListGridViewCstm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AlbumListGridViewCstm;
     }
 }

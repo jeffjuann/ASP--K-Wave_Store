@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using KpopZtationLab.Controllers;
 using KpopZtationLab.Models;
 using KpopZtationLab.Pattern;
+
 namespace KpopZtationLab.Views.Pages
 {
     public partial class Cartpage : System.Web.UI.Page
@@ -33,19 +34,20 @@ namespace KpopZtationLab.Views.Pages
         {
             int userID = getCurrentUserID();
             carts = CartController.Get_user_by_id(userID);
-            CartGridView.DataSource = carts;
-            CartGridView.DataBind();
+            CartRepeater.DataSource = carts;
+            CartRepeater.DataBind();
         }
 
-        protected void CartGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void CartRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            GridViewRow row = CartGridView.Rows[e.RowIndex];
-            int albumID = int.Parse(row.Cells[0].Text);
-            int userID = getCurrentUserID();
-            CartController.Remove(userID, albumID);
-            Response.Redirect(Routes.Route.Home);
+            if (e.CommandName == "Delete")
+            {
+                int albumID = int.Parse(e.CommandArgument.ToString());
+                int userID = getCurrentUserID();
+                CartController.Remove(userID, albumID);
+                Response.Redirect(Routes.Route.Home);
+            }
         }
-
 
         protected void CheckOutBtn_Click(object sender, EventArgs e)
         {
@@ -53,6 +55,5 @@ namespace KpopZtationLab.Views.Pages
             CartController.CheckOut(id);
             Response.Redirect(Routes.Route.Home);
         }
-
     }
 }

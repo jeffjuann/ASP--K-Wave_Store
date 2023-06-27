@@ -15,30 +15,30 @@ namespace KpopZtationLab.Views.Common
     {
 
         /// <summary>
+        /// AdminArtistsRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater AdminArtistsRepeater;
+
+        /// <summary>
         /// CreateArtist control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CreateArtist;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor CreateArtist;
 
         /// <summary>
-        /// AdminArtistsGridView control.
+        /// ArtistImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView AdminArtistsGridView;
-
-        /// <summary>
-        /// ArtistsGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ArtistsGridView;
+        protected global::System.Web.UI.WebControls.Image ArtistImage;
     }
 }
