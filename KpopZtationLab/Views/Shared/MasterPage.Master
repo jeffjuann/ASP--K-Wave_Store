@@ -15,7 +15,7 @@
     <form id="form1" runat="server">
         <nav id="customerNavbar" runat="server" >
             <div class="left">
-               <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
+               <a href="/Views/Common/Homepage.aspx">K-Wave Store</a>
             </div>
             <div class="right">
                 <asp:HyperLink class="navButton" ID="HyperLink1" runat="server" NavigateUrl="~/Views/Customer/Cartpage.aspx">Cart</asp:HyperLink>

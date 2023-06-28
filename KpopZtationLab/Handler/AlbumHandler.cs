@@ -24,7 +24,7 @@ namespace KpopZtationLab.Handler
             repo.albums.Remove(album);
         }
 
-        
+
 
         public static List<Album> getAlbum(int artistID)
         {
