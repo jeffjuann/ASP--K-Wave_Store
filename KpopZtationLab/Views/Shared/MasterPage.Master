@@ -26,7 +26,7 @@
         </nav>
          <nav id="adminNavbar" runat="server">
             <div class="left">
-               <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
+               <a href="/Views/Common/Homepage.aspx">K-Wave Store</a>
             </div>            
              <div class="right">
                  <asp:HyperLink class="navButton" ID="HyperLink5" runat="server" NavigateUrl="~/Views/Admin/TransactionReport.aspx">Transaction Report</asp:HyperLink>
@@ -36,7 +36,7 @@
         </nav>
          <nav id="guestNavbar" runat="server">
              <div class="left">
-               <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
+               <a href="/Views/Common/Homepage.aspx">K-Wave Store</a>
              </div>            
              <div class="right">
                 <asp:Button class="navButton" ID="Button1" runat="server" Text="Login" OnClick="Login_Click"/>

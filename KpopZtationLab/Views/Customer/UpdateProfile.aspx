@@ -5,15 +5,13 @@
         @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
         @import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
         @import "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
-        * {
-            box-sizing: border-box;
-        }
         body {
-            font-size: 100%;
+            
             font-family: 'Open Sans', sans-serif;
             background: #BDBDBD;
         }
         .wrapper {
+            font-size: 100%;
             max-width: 70vw;
             margin: 3rem auto;
             background: #eceff1;
@@ -72,7 +70,7 @@
             width: 100%;
             border: 0.063rem solid #b0bec5;
         }
-        input[type="submit"] {
+        .submit-btn {
             padding: 0.75rem 1.5rem;
             margin: .5rem 0 0;
             outline: 0;
@@ -85,7 +83,7 @@
             letter-spacing: .25px;
             transition: background .3s ease;
         }
-        input[type="submit"]:hover {
+        .submit-btn:hover {
             background: #39a1f4;
         }
     </style>
@@ -121,7 +119,7 @@
         </div>
         <asp:Label ID="ErrorLbl" runat="server" Text="No User Found" Visible="false" CssClass="error-label"></asp:Label>
         <div class="form-grp">
-            <asp:Button ID="Save" runat="server" Text="Save Changes" OnClick="Save_Click" CssClass="submit-btn" />
+            <asp:Button class="SaveBtn" ID="Save" runat="server" Text="Save Changes" OnClick="Save_Click" CssClass="submit-btn" />
         </div>
     </div>
 </asp:Content>

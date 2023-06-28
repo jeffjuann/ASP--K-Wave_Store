@@ -3,6 +3,7 @@
     <title>Create Album</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div style="padding: 64px 96px;">
             <h2>Insert a new Album to <%=artist.ArtistName %>'s Album</h2>
             <br />
             <asp:FileUpload ID="AlbumImageUpload" runat="server" EnableViewState="true"/>
@@ -31,4 +32,6 @@
             <asp:Label ID="errLbl" runat="server" Text=""></asp:Label>
             <br />
             <asp:Button ID="createAlbum" runat="server" Text="Insert Album" OnClick="createAlbum_Click" />
+        
+    </div>
 </asp:Content>
